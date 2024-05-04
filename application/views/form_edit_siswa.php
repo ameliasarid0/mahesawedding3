@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Form Tambah Siswa </title>
+    <title> FORM EDIT SISWA </title>
 </head>
 <body>
     <form action="<?php echo base_url('Home/update/'). $tampil['nim'] ?>" method="post">
