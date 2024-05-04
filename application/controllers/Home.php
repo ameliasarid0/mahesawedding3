@@ -4,10 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller {
     public function index()
 	{
-		$this->load->model('M_siswa');
-		$data['tampil']=$this->M_siswa->read(); 
-		/* variabel $data berbeda dengan $data di models, yg digunakan di view adalah parameter tampil*/
-		$this->load->view('halaman_utama', $data); /*menuju view halaman utama, dengan membawa variabel $data*/
+		$this->load->view('halaman_utama'); 
 	}
 
 	public function simpan()
