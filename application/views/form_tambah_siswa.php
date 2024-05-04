@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Form Tambah Siswa </title>
+    <title> Mahesa Wedding </title>
 </head>
 <body>
     <form action="<?php echo base_url('Home/simpan'); ?>" method="post">
