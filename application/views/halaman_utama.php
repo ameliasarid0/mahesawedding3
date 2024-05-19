@@ -13,28 +13,7 @@
       <div class="fadeIn first">
         <img src="img/mahesa_logo.png" id="icon1" />
       </div>
-<div class="containerLinks">
-<table align="center" border="1" cellpadding="10" >
-  <tr>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=1">Paket Akad Ratu</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=2">Paket Akad Nikah</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket Akad Medium</a></td>
-  </tr>
-  <tr>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 27JT</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 25JT</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 35JT</a></td>
-  </tr>
-  <tr>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 30JT</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 25JT</a></td>
-  <td><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 22JT</a></td>
-  </tr>
-  <tr>
-  <td colspan="3" align="center"><a class="paket" href="http://localhost/linktree/redir.php?q=3">Paket All include 20JT</a></td>
-  </tr>
-</table>
-
+      
 <div class="container tm-container-gallery">
 <div class="row">
   <div class="col-24">
