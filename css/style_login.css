@@ -302,7 +302,6 @@ input[type=text]:placeholder {
 /* MENGGUNAKAN GAMBAR */
 .grid figure {
   position: relative;
-  float: left;
   overflow: hidden;
   background: #3085a3;
   text-align: center;
@@ -311,7 +310,6 @@ input[type=text]:placeholder {
 
 .grid figure img {
   position: relative;
-  display: block;
   min-height: 100%;
   max-width: 100%;
   opacity: 0.8;
@@ -375,7 +373,7 @@ input[type=text]:placeholder {
 /*---------------*/
 
 figure.effect-honey {
-  background: #4a3753;
+  background: #3085a3;
   max-width: 220px;
 }
 
