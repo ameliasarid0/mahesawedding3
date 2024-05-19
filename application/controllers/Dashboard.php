@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
 		// jika session status tidak sama dengan session telah_login, berarti admin belum login
 		// maka halaman akan di alihkan kembali ke halaman login.
 		if($this->session->userdata('status')!="telah_login"){
-			redirect(base_url().'login?alert=belum_login');
+			redirect(base_url().'Home/login');
 		}
 	}
 
@@ -30,13 +30,20 @@ class Dashboard extends CI_Controller {
 		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
 		// hitung jumlah halaman
 		$data['jumlah_invoice'] = $this->m_data->get_data('invoice')->num_rows();
+		$this->load->view('dashboard/v_header',$data);
 		$this->load->view('dashboard/v_index',$data);
+		$this->load->view('dashboard/v_footer',$data);
+	}
+
+	public function cust()
+	{
+		$this->load->view('dashboardcust/v_header');
 	}
 
 	public function keluar()
 	{
 		$this->session->sess_destroy();
-		redirect('login?alert=logout');
+		redirect('Home/login');
 	}
 
 	public function ganti_password()
