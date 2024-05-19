@@ -37,7 +37,17 @@ class Dashboard extends CI_Controller {
 
 	public function cust()
 	{
-		$this->load->view('dashboardcust/v_header');
+		// hitung jumlah artikel
+		$data['jumlah_produk'] = $this->m_data->get_data('produk')->num_rows();
+		// hitung jumlah kategori
+		$data['jumlah_kategori'] = $this->m_data->get_data('kategori')->num_rows();
+		// hitung jumlah admin
+		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
+		// hitung jumlah halaman
+		$data['jumlah_invoice'] = $this->m_data->get_data('invoice')->num_rows();
+		$this->load->view('dashboard/v_header',$data);
+		$this->load->view('dashboard/v_indexcust',$data);
+		$this->load->view('dashboard/v_footer',$data);
 	}
 
 	public function keluar()

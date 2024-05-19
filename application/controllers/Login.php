@@ -81,7 +81,7 @@ class Login extends CI_Controller {
 	
 					// buat session untuk customer yang berhasil login
 					$data_session = array(
-						'id' => $data->admin_id,
+						'id' => $data->customer_id,
 						'username' => $data->customer_email,
 						'status' => "telah_login"
 					);
