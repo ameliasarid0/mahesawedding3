@@ -53,7 +53,7 @@ class Dashboard extends CI_Controller {
 	public function keluar()
 	{
 		$this->session->sess_destroy();
-		redirect('Home/login');
+		redirect(base_url().'home');
 	}
 
 	public function ganti_password()

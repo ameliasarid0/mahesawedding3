@@ -88,7 +88,7 @@
   </div>
 </div>
       <!-- Login Button  -->
-      <form action="<?php echo base_url('Home/login')?>" method="post">
+      <form action="<?php echo base_url(); ?>login" method="post">
         <input type="submit" class="btn btn-primary btn-md" value="Login">
       </form>
   

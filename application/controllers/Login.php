@@ -61,38 +61,7 @@ class Login extends CI_Controller {
 
 				redirect(base_url().'dashboard');
 			}else{
-				// menangkap data username dan password dari halaman login
-				$username = $this->input->post('username');
-				$password = $this->input->post('password');
-
-				$where = array(
-				'customer_email' => $username,
-				'customer_password' => md5($password)
-				);
-
-				$this->load->model('m_data');
-
-				// cek kesesuaian login pada table customer
-				$cek = $this->m_data->cek_login('customer',$where)->num_rows();
-				if($cek > 0){
-
-					// ambil data admin yang melakukan login
-					$data = $this->m_data->cek_login('customer',$where)->row();
-	
-					// buat session untuk customer yang berhasil login
-					$data_session = array(
-						'id' => $data->customer_id,
-						'username' => $data->customer_email,
-						'status' => "telah_login"
-					);
-					$this->session->set_userdata($data_session);
-	
-					// alihkan halaman ke halaman dashboard customer
-	
-					redirect(base_url().'dashboard/cust');
-				}else{
-				redirect(base_url().'login');
-				}
+				redirect(base_url().'login?alert=gagal');
 			}
 
 		}else{
