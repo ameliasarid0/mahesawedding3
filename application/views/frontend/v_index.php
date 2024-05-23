@@ -67,22 +67,6 @@
         </figcaption>
         </figure>
         </a>
-        <a href="img/price-img-01.jpg">
-        <figure class="effect-honey tm-gallery-item">
-        <img src="img/price-tn-01.jpg" alt="Image 7" class="img-fluid">
-        <figcaption>
-        <h2><i>ALL INCLUDE <span>20JUTA</span></i></h2>
-        </figcaption>
-        </figure>
-        </a>
-        <a href="img/price-img-02.jpg">
-        <figure class="effect-honey tm-gallery-item">
-        <img src="img/price-tn-02.jpg" alt="Image 8" class="img-fluid">
-        <figcaption>
-        <h2><i>ALL INCLUDE <span> 22JUTA</span></i></h2>
-        </figcaption>
-        </figure>
-        </a>
       </div>
     </div>
   </div>
