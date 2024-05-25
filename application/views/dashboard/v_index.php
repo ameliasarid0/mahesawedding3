@@ -1,11 +1,89 @@
 <div class="content-wrapper">
-	<section class="content-header">
-		<h1>
-			Dashboard
-			<small>Control panel</small>
-		</h1>
-	</section>
+	<div class="container">
+		<div class="content-header">
+			<h1>
+				Dashboard
+				<small>Control panel</small>
+			</h1>
+		</div>
+        <div class="sidebar">
+            <div class="header"> 
+                <div class="list-item">
+                </div>
+                <div class="illustration">
+                    <img src="assets/mahesa_logo.png"" alt="">
+                </div>
+                </div>
+            <div class="main">
+                <div class="list-item">
+                    <a href="#">
+						<i class="far fa-2x fa-comment mr-4"></i>
+                        <span class="description">Dashboard</span>
+                   </a>
+                </div>
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Analytics.svg" alt="" class="icon">
+                        <span class="description">Analytics</span>
+                   </a>
+                </div>
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Category.svg" alt="" class="icon">
+                        <span class="description">Category</span>
+                   </a>
+                </div>
 
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Team.svg" alt="" class="icon">
+                        <span class="description">Team</span>
+                   </a>
+                </div>
+
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Event.svg" alt="" class="icon">
+                        <span class="description">Event</span>
+                   </a>
+                </div>
+
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Explore.svg" alt="" class="icon">
+                        <span class="description">Explore</span>
+                   </a>
+                </div>
+
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/History.svg" alt="" class="icon">
+                        <span class="description">History</span>
+                   </a>
+                </div>
+
+                <div class="list-item">
+                    <a href="#">
+                        <img src="assets/Setting.svg" alt="" class="icon">
+                        <span class="description">Setting</span>
+                   </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main-content">
+            <div id="menu-button">
+                <input type="checkbox" id="menu-checkbox">
+                <label for="menu-checkbox" id="menu-label">
+                    <div id="hamburger"></div>
+                </label>
+            </div>
+        </div>
+		<script src="script.js"></script>
+        
+    
 		<div class="row">
 			<div class="col-lg-6">
 				

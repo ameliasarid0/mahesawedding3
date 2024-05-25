@@ -22,9 +22,7 @@ a {
   font-weight: 400;
 }
 
-.paket{
-  color: #19709c;
-}
+
 h2 {
   text-align: center;
   font-size: 16px;
@@ -104,7 +102,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #19709c;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -112,7 +110,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 16px;
   -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
@@ -126,7 +124,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #56baed;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -137,11 +135,11 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=email], input[type=date], select {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -167,6 +165,12 @@ input[type=text]:placeholder {
   color: #cccccc;
 }
 
+select{
+  background-color: #f6f6f6;
+  color: #7b7d7e;
+  font-size: 16px;
+  padding: 15px 32px;
+}
 
 
 /* ANIMATIONS */
@@ -295,140 +299,143 @@ input[type=text]:placeholder {
   height:100px;
 }
 
+/* card */
 
+.section-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  width: 85%;
+  margin: 60px auto;
 
+  background-color: rgba(255, 166, 0, 0);
+}
 
+.card {
+  background-color: #fff;
+  box-shadow: 0 20px 40px rgba(0,0,0, .2);
+}
 
-/* MENGGUNAKAN GAMBAR */
-.grid figure {
-  position: relative;
-  overflow: hidden;
-  background: #3085a3;
+.card__img {
+  width: 100%;
+  display: block;
+}
+
+.card__details {
+  padding: 10px 0;
+}
+
+.card__details ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px 0;
+}
+
+.card__details ul li {
+  width: 100%;
   text-align: center;
-  cursor: pointer;
+  font-size: 13px;
+  padding: 5px 0;
 }
 
-.grid figure img {
-  position: relative;
-  min-height: 100%;
-  max-width: 100%;
-  opacity: 0.8;
+.card__details ul li:not(:last-child) {
+  border-bottom: 1px solid #bbb;
 }
 
-.grid figure figcaption {
-  padding: 2em;
-  color: #fff;
+/* BUTTON */
+
+
+.card .btn {
+  text-decoration:  none;
   text-transform: uppercase;
-  font-size: 1.25em;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  text-align: center;
+  color: #eee;
+  font-weight: 100;
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 50px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 30px;
+  background-color: #19709c;
 }
 
-.grid figure figcaption::before,
-.grid figure figcaption::after {
-  pointer-events: none;
+.card .btn:hover {
+  background-color: #56baed;
 }
 
-.grid figure figcaption,
-.grid figure figcaption > a {
-  position: absolute;
+
+/* POPUP */
+.popup {
+  width: 100%;
+  height: 274vh;
+  background-color: rgba(0,0,0, .5);
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Anchor will cover the whole item by default */
-/* For some effects it will show as a button */
-.grid figure figcaption > a {
-  z-index: 1000;
-  text-indent: 200%;
-  white-space: nowrap;
-  font-size: 0;
   opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
 }
 
-.grid figure h2 {
-  word-spacing: -0.15em;
-  font-size: 0.9em;
-  font-weight: 300;
-}
-
-.grid figure h2 span {
-  font-weight: 600;
-}
-
-.grid figure h2,
-.grid figure p {
-  margin: 0;
-}
-
-.grid figure p {
-  letter-spacing: 1px;
-  font-size: 68.5%;
-}
-
-/*---------------*/
-/***** Honey *****/
-/*---------------*/
-
-figure.effect-honey {
-  background: #3085a3;
-  max-width: 220px;
-}
-
-figure.effect-honey img {
-  opacity: 1;
-  -webkit-transition: opacity 0.35s;
-  transition: opacity 0.35s;
-}
-
-figure.effect-honey:hover img {
-  opacity: 0.4;
-}
-
-figure.effect-honey figcaption::before {
+.popup__content {
+  width: max-content;
+  height: max-content;
+  background-color: #fff;
+  box-shadow: 0 20px 40px rgba(0,0,0, .2);
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  background: #38C;
-  content: "";
-  -webkit-transform: translate3d(0, 10px, 0);
-  transform: translate3d(0, 10px, 0);
-}
-
-figure.effect-honey h2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 1em 1.5em;
-  width: 100%;
-  text-align: left;
-  -webkit-transform: translate3d(0, -30px, 0);
-  transform: translate3d(0, -30px, 0);
-}
-
-figure.effect-honey h2 i {
-  font-style: normal;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.25);
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: translate3d(0, -30px, 0);
-  transform: translate3d(0, -30px, 0);
+  transition: all .5s .1s;
+}
+.popup__img {
+  width: 100%;
+  height: 100pv;
 }
 
-figure.effect-honey figcaption::before,
-figure.effect-honey h2 {
-  -webkit-transition: -webkit-transform 0.35s;
-  transition: transform 0.35s;
+.popup__img img {
+  width: 100%;
+  height: 150vh;
 }
-
-figure.effect-honey:hover figcaption::before,
-figure.effect-honey:hover h2,
-figure.effect-honey:hover h2 i {
+#popup1:target,
+#popup2:target,
+#popup3:target,
+#popup4:target,
+#popup5:target,
+#popup6:target {
   opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  visibility: visible;
+}
+
+#popup1:target .popup__content,
+#popup2:target .popup__content,
+#popup3:target .popup__content,
+#popup4:target .popup__content,
+#popup5:target .popup__content,
+#popup6:target .popup__content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup__close:link,
+.popup__close:visited {
+  position: absolute;
+  top: 12px;
+  left: 580px;
+  text-decoration: none;
+  color: #000;
+  font-size: 50px;
+  display: inline-block;
+  line-height: 1;
+  transition: all .3s;
+}
+
+.popup__close:hover,
+.popup__close:active {
+  color: #555;
 }
