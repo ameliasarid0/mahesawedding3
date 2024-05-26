@@ -296,7 +296,7 @@ $config['error_views_path'] = '';
 |
 */
 $config['cache_path'] = '';
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Cache Include Query String

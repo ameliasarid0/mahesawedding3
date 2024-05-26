@@ -98,6 +98,11 @@ class Home extends CI_Controller {
 		$alamatrsp = $this->input->post('alamatrsp');
 		$kota = $this->input->post('kota');
 		$paket = $this->input->post('paket');
+		$foto = $_FILES["foto"] ["tmp_name"];
+
+		$path = "img/bukti_bayar/";
+		$imagePath = $path . $email. "_bukti.jpg";
+		move_uploaded_file($foto, $imagePath);
 		// echo $email;
 		$cek_email = $this->db->query("select * from customer where customer_email='$email'");
 		if($cek_email->num_rows() > 0){
@@ -113,6 +118,7 @@ class Home extends CI_Controller {
 				'customer_alamat' => $alamat,
 				'customer_kota' => $kota,
 				'customer_paket' => $paket,
+				'customer_bukti' => $imagePath,
 			);
 			$this->m_data->insert_data($data,'customer');
 			redirect(base_url().'home/daftarberhasil?alert=menunggukonfirmasi');

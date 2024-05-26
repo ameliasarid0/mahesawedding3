@@ -14,7 +14,7 @@
         <img src="<?php echo base_url() ?>img/mahesa_logo.png" id="icon1" />
       </div>
       <pre>
-<form action="<?php echo base_url().'home/daftaraksi' ?>" method="post">
+<form action="<?php echo base_url().'home/daftaraksi' ?>" method="post" enctype="multipart/form-data">
 <input type="text" id="nama" class="fadeIn second" name="nama" placeholder="Nama Lengkap">
 <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email">
 <input type="text" id="alamat" class="fadeIn third" name="alamat" placeholder="Alamat Tinggal">
@@ -43,6 +43,19 @@
 </select>
 <font color="#19709c">Tanggal Resepsi</font>
 <input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi">
+<font color="#19709c">_____________________________________________________________________________________________________________________________</font>
+<font color="#19709c">
+!!  SYARAT DAN KETENTUAN  !!
+Biaya Booking Tanggal Rp. 1.000.000,- (diluar harga paket).
+Jika ada permintaan ubah tanggal silahkan konfirmasi ADMIN terlebih dahulu.
+UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
+</font>
+<h3>
+TRANSFER HANYA MELALUI REK 
+BCA 37808990101 A/N MAHESA WEDDING GALLERY
+--Silahkan Upload Bukti Bayar--
+</h3>
+        <input type="file" id="foto" class="fadeIn third" name="foto" placeholder="Bukti Bayar" accept="image/*">
         </pre>
         <input type="submit" class="fadeIn fourth" value="DAFTAR">
       </form>
