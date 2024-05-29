@@ -19,8 +19,7 @@
 <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email">
 <input type="text" id="alamat" class="fadeIn third" name="alamat" placeholder="Alamat Tinggal">
 <input type="text" id="nohp" class="fadeIn third" name="hp" placeholder="Nomor Whatsapp">
-<font color="#19709c">Tanggal Lahir</font>
-<input type="date" id="ttl" class="fadeIn third" name="ttl" placeholder="Tanggal Lahir">
+<input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
 
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 

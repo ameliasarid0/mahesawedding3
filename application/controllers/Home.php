@@ -3,15 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
-	function __construct()
-	{
-		// session_start();
-		parent::__construct();
-		date_default_timezone_set('Asia/Jakarta');
 
-		$this->load->model('m_data');
-
-	}
 
     public function index()
 	{
@@ -24,7 +16,6 @@ class Home extends CI_Controller {
 
 	public function masuk_act()
 	{
-
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
@@ -36,37 +27,37 @@ class Home extends CI_Controller {
 
 			$where = array(
 				'customer_email' => $username,
-				'customer_password' => md5($password)
+				'customer_password' => md5($password),
 			);
 
 			$this->load->model('m_data');
 
-			// cek kesesuaian login pada table customer
+			// cek kesesuaian login pada table admin
 			$cek = $this->m_data->cek_login('customer',$where)->num_rows();
 
 			// cek jika login benar
 			if($cek > 0){
 
-				// ambil data customer yang melakukan login
+				// ambil data admin yang melakukan login
 				$data = $this->m_data->cek_login('customer',$where)->row();
 
-				// buat session untuk customer yang berhasil login
+				// buat session untuk admin yang berhasil login
 				$data_session = array(
 					'id' => $data->customer_id,
-					'username' => $data->customer_email,
+					'username' => $data->customer_username,
 					'status' => "telah_login"
 				);
 				$this->session->set_userdata($data_session);
 
-				// alihkan halaman ke halaman customer
+				// alihkan halaman ke halaman dashboard admin
 
 				redirect(base_url().'home/customer');
 			}else{
-				redirect(base_url().'login');
+				redirect(base_url().'home/masuk?alert=gagal');
 			}
 
 		}else{
-			$this->load->view('v_login');
+			$this->load->view('home/masuk');
 			
 		}
 	}
@@ -89,11 +80,13 @@ class Home extends CI_Controller {
 	
 	public function daftaraksi()
 	{
+		$this->load->model('m_data');
+
 		$nama  = $this->input->post('nama');
 		$email = $this->input->post('email');
 		$alamat = $this->input->post('alamat');
 		$hp = $this->input->post('hp');
-		$ttl = $this->input->post('ttl');
+		$password = $this->input->post('password');
 		$tglrsp = $this->input->post('tglrsp');
 		$alamatrsp = $this->input->post('alamatrsp');
 		$kota = $this->input->post('kota');
@@ -106,13 +99,13 @@ class Home extends CI_Controller {
 		// echo $email;
 		$cek_email = $this->db->query("select * from customer where customer_email='$email'");
 		if($cek_email->num_rows() > 0){
-			redirect(base_url().'home/daftar?alert=duplikat');
+			redirect(base_url().'home/daftar?alert=duplikat'); 
 		}else{
 			$data = array(
 				'customer_nama' => $nama,
 				'customer_email' => $email,
 				'customer_hp' => $hp,
-				'customer_ttl' => $ttl,
+				'customer_password' => $password,
 				'customer_tglrsp' => $tglrsp,
 				'customer_alamatrsp' => $alamatrsp,
 				'customer_alamat' => $alamat,

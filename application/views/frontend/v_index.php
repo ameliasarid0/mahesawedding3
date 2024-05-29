@@ -13,7 +13,14 @@
       <div class="fadeIn first">
         <img src="img/mahesa_logo.png" id="icon1" />
       </div>
-      
+
+      <!-- Login Button  -->
+      </br>
+      </br>
+      <form action="<?php echo base_url().'login' ?>" method="post">
+         <input type="submit" class="fadeIn fourth" value=" LOG IN ">
+      </form>
+
       <div class="section-card">
       <div class="card card">
          <img src="img/price-tn-01.jpg" alt="IDR 20.000.000" class="card__img">
@@ -99,15 +106,10 @@
          <a href="#popup6" class="btn">SELENGKAPNYA</a>
       </div>
       </div>
-      
-      <!-- Login Button  -->
-      <form action="<?php echo base_url().'login' ?>" method="post">
-        <input type="submit" class="fadeIn fourth" value="LOG IN">
-      </form>
+
       <form action="<?php echo base_url().'home/daftar' ?>" method="post">
-        <input type="submit" class="fadeIn fourth" value="DAFTAR">
-    </form>
-  
+         <input type="submit" class="fadeIn fourth" value="DAFTAR">
+      </form>
       <!-- Footer -->
       <div id="formFooter">
         Masin bingung? Yuk <a class="underlineHover" href="https://wa.me/6285776699443/?text=%2AKONSULTASI+BOOKING+WO%2A%0D%0ANama+++%3A%0D%0AAlamat+Tinggal+%3A%0D%0ARencana+Acara+Kapan+%3A+%0D%0APertanyaan+%3A+%0D%0A" />Hubungi Admin</a>

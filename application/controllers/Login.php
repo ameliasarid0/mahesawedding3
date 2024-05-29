@@ -18,10 +18,17 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('v_login');
+		$this->load->view('v_login_admin');
 	}
 
-	public function aksi()
+	public function cust()
+	{
+		$this->load->view('v_login_cust');
+	}
+
+
+
+	public function adminaksi()
 	{
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -65,7 +72,56 @@ class Login extends CI_Controller {
 			}
 
 		}else{
-			$this->load->view('v_login');
+			$this->load->view('v_login_admin');
+			
+		}
+	}
+
+	public function custaksi()
+	{
+
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		if($this->form_validation->run() != false){
+
+			// menangkap data username dan password dari halaman login
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+
+			$where = array(
+				'customer_email' => $username,
+				'customer_password' => md5($password)
+			);
+
+			$this->load->model('m_data');
+
+			// cek kesesuaian login pada table customer
+			$cek = $this->m_data->cek_login('customer',$where)->num_rows();
+
+			// cek jika login benar
+			if($cek > 0){
+
+				// ambil data customer yang melakukan login
+				$data = $this->m_data->cek_login('customer',$where)->row();
+
+				// buat session untuk customer yang berhasil login
+				$data_session = array(
+					'id' => $data->customer_id,
+					'username' => $data->customer_email,
+					'status' => "telah_login"
+				);
+				$this->session->set_userdata($data_session);
+
+				// alihkan halaman ke halaman dashboard customer
+
+				redirect(base_url().'home/customer');
+			}else{
+				redirect(base_url().'home/customer');
+			}
+
+		}else{
+			$this->load->view('v_login_cust');
 			
 		}
 	}

@@ -101,7 +101,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit], input[type=reset] {
   background-color: #19709c;
   border: none;
   color: white;
@@ -135,7 +135,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], input[type=email], input[type=date], select {
+input[type=text], input[type=email], input[type=date],input[type=password], select {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;

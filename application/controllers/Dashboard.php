@@ -16,16 +16,14 @@ class Dashboard extends CI_Controller {
 		// jika session status tidak sama dengan session telah_login, berarti admin belum login
 		// maka halaman akan di alihkan kembali ke halaman login.
 		if($this->session->userdata('status')!="telah_login"){
-			redirect(base_url().'Home/login');
+			redirect(base_url().'Login');
 		}
 	}
 
 	public function index()
 	{
-		// hitung jumlah artikel
-		$data['jumlah_produk'] = $this->m_data->get_data('produk')->num_rows();
 		// hitung jumlah kategori
-		$data['jumlah_kategori'] = $this->m_data->get_data('kategori')->num_rows();
+		$data['jumlah_customer'] = $this->m_data->get_data('customer')->num_rows();
 		// hitung jumlah admin
 		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
 		// hitung jumlah halaman
@@ -144,6 +142,9 @@ class Dashboard extends CI_Controller {
 			$hp = $this->input->post('hp');
 			$alamat = $this->input->post('alamat');
 			$password = $this->input->post('password');
+			$alamatrsp = $this->input->post('alamatrsp');
+			$kota = $this->input->post('kota');
+			$paket= $this->input->post('paket');
 
 			$data = array(
 				'customer_nama' => $nama,
@@ -151,6 +152,9 @@ class Dashboard extends CI_Controller {
 				'customer_hp' => $hp,
 				'customer_alamat' => $alamat,
 				'customer_password' => md5($password),
+				'customer_alamatrsp' => $alamatrsp,
+				'customer_kota' => $kota,
+				'customer_paket' => $paket,
 			);
 
 			$this->m_data->insert_data($data,'customer');
@@ -190,6 +194,9 @@ class Dashboard extends CI_Controller {
 			$hp = $this->input->post('hp');
 			$alamat = $this->input->post('alamat');
 			$password = $this->input->post('password');
+			$alamatrsp = $this->input->post('alamatrsp');
+			$kota = $this->input->post('kota');
+			$paket= $this->input->post('paket');
 
 			$where = array(
 				'customer_id' => $id
@@ -201,6 +208,9 @@ class Dashboard extends CI_Controller {
 				'customer_hp' => $hp,
 				'customer_alamat' => $alamat,
 				'customer_password' => md5($password),
+				'customer_alamatrsp' => $alamatrsp,
+				'customer_kota' => $kota,
+				'customer_paket' => $paket,
 			);
 
 			$this->m_data->update_data($where, $data,'customer');
@@ -614,7 +624,7 @@ class Dashboard extends CI_Controller {
 		if($this->form_validation->run() != false){
 
 			$config['encrypt_name'] = TRUE;
-			$config['upload_path']   = './gambar/user/';
+			$config['upload_path']   = '/img/foto_user/';
 			$config['allowed_types'] = 'gif|jpg|png';
 
 			$this->load->library('upload', $config);
@@ -626,7 +636,7 @@ class Dashboard extends CI_Controller {
 			}else{
 				$foto = "";
 			}
-
+ 
 			$nama = $this->input->post('nama');
 			$username = $this->input->post('username');
 			$password = md5($this->input->post('password'));

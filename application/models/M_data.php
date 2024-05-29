@@ -7,7 +7,7 @@ class M_data extends CI_Model{
 	function cek_login($table,$where){
 		return $this->db->get_where($table,$where);
 	}
-	
+	 
 	// FUNGSI CRUD
 	// fungsi untuk mengambil data dari database
 	function get_data($table){
