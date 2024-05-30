@@ -4,7 +4,7 @@
             <div class="header--title">
                 <span>Primary</span>
                 <h2>Daftar Paket</h2>
-            </div>
+            </div>  
 
             <div class="user--info">
                 <div class="search--box">
@@ -28,20 +28,15 @@
                     <tbody>
                             <td>Nama Paket</td>
                             <input type="hidden" name="id">
-                            <td>
-
-                            </td>
+                            <td><input type="text"></td>
                         </tr>
                         <tr>
                             <td>Harga</td>
-                            <td>
-
-                            </td>
+                            <td><input type="number"></td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
-                            <td>            
-
+                            <td><input type="text">
                             </td>
                         </tr>
                     </tbody>
