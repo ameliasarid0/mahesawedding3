@@ -64,7 +64,9 @@ class Home extends CI_Controller {
 
 	public function customer()
 	{
+		$this->load->view('frontend/v_header');
 		$this->load->view('frontend/v_customer');
+		$this->load->view('frontend/v_footer');
 	}
 
 	public function keluar()
@@ -121,5 +123,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('frontend/v_daftarberhasil');
 	}
+
+	
 }
 

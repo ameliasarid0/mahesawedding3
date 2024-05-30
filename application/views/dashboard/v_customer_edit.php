@@ -11,7 +11,7 @@
                     <i class="fa-solid fa-search"></i>
                     <input type="text" placeholder="Search" />
                 </div>
-                <img src="<?php echo base_url('img/foto_user/user.jpg') ?>" alt="">
+                <i class="fas fa-user icon blue"></i>
             </div>
         </div>
 

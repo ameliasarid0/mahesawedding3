@@ -38,21 +38,21 @@
             <li>
                 <a href="#">
                     <i class="fas fa-th-list"></i>
-                    <span>Order</span>
+                    <span>Paket</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url().'dashboard/transaksi' ?>">
                     <i class="fas fa-usd"></i>
-                    <span>Payment</span>
+                    <span>Pesanan</span>
                 </a>
             </li>
 
             <li>
                 <a href="#">
                     <i class="fas fa-file"></i>
-                    <span>Report</span>
+                    <span>Laporan</span>
                 </a>
             </li>
 
