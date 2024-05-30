@@ -321,12 +321,12 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->insert_data($data,'produk');
 
-			redirect(base_url().'dashboard/produk');	
+			redirect(base_url().'dashboard/paket');	
 
 		}else{
 			$data['kategori'] = $this->m_data->get_data('kategori')->result();
 			$this->load->view('dashboard/v_header');
-			$this->load->view('dashboard/v_produk_tambah',$data);
+			$this->load->view('dashboard/v_paket_tambah',$data);
 			$this->load->view('dashboard/v_footer');
 		}
 	}
@@ -340,7 +340,7 @@ class Dashboard extends CI_Controller {
 		$data['produk'] = $this->m_data->edit_data($where,'produk')->result();
 		$data['kategori'] = $this->m_data->get_data('kategori')->result();
 		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_produk_edit',$data);
+		$this->load->view('dashboard/v_paket_edit',$data);
 		$this->load->view('dashboard/v_footer');
 	}
 
@@ -431,7 +431,7 @@ class Dashboard extends CI_Controller {
 				}
 			}
 
-			redirect(base_url().'dashboard/produk');
+			redirect(base_url().'dashboard/paket');
 
 		}else{
 			$id = $this->input->post('id');
@@ -441,7 +441,7 @@ class Dashboard extends CI_Controller {
 			$data['produk'] = $this->m_data->edit_data($where,'produk')->result();
 			$data['kategori'] = $this->m_data->get_data('kategori')->result();
 			$this->load->view('dashboard/v_header');
-			$this->load->view('dashboard/v_produk_edit',$data);
+			$this->load->view('dashboard/v_paket_edit',$data);
 			$this->load->view('dashboard/v_footer');
 		}
 	}
