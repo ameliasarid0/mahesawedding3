@@ -36,7 +36,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url().'dashboard/paket' ?>">
                     <i class="fas fa-th-list"></i>
                     <span>Paket</span>
                 </a>
