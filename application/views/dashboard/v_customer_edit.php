@@ -25,6 +25,7 @@
                             <th colspan="2">EDIT DATA CUSTOMER</th>
                         </tr>
                     </thead>
+                    <tbody>
                         <?php 
                         foreach($customer as $c){
                         ?>

@@ -49,7 +49,7 @@
                         <?php 
                         }
                         ?>
-                    </tbody>
+                    </tbody> 
                     <tfoot>
                     </tfoot>
                 </table>

@@ -24,6 +24,7 @@
                             <th colspan="2">TAMBAH DATA ADMIN</th>
                         </tr>
                     </thead>
+                    <tbody>
                             <td>Nama</td>
                             <td>
                                 <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama admin">

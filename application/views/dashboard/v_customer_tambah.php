@@ -22,9 +22,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="2">EDIT DATA CUSTOMER</th>
+                            <th colspan="2">TAMBAH DATA CUSTOMER</th>
                         </tr>
                     </thead>
+                    <tbody>
                             <td>Nama</td>
                             <input type="hidden" name="id">
                             <td>

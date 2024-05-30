@@ -24,6 +24,7 @@
                             <th colspan="2">EDIT DATA ADMIN</th>
                         </tr>
                     </thead>
+                    <tbody>
                         <?php 
                         foreach($admin as $p){
                         ?>

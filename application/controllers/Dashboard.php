@@ -246,23 +246,23 @@ class Dashboard extends CI_Controller {
 
 
 	// CRUD ARTIKEL
-	public function produk()
+	public function paket()
 	{
 		$data['produk'] = $this->db->query("SELECT * FROM produk,kategori where kategori_id=produk_kategori order by produk_id desc")->result();	
 		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_produk',$data);
+		$this->load->view('dashboard/v_paket',$data);
 		$this->load->view('dashboard/v_footer');
 	}
 
-	public function produk_tambah()
+	public function paket_tambah()
 	{
 		$data['kategori'] = $this->m_data->get_data('kategori')->result();
 		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_produk_tambah',$data);
+		$this->load->view('dashboard/v_paket_tambah',$data);
 		$this->load->view('dashboard/v_footer');
 	}
 
-	public function produk_aksi()
+	public function paket_aksi()
 	{
 		$this->form_validation->set_rules('nama','nama','required');
 		$this->form_validation->set_rules('kategori','kategori','required');
@@ -332,7 +332,7 @@ class Dashboard extends CI_Controller {
 	}
 
 
-	public function produk_edit($id)
+	public function paket_edit($id)
 	{
 		$where = array(
 			'produk_id' => $id
@@ -345,7 +345,7 @@ class Dashboard extends CI_Controller {
 	}
 
 
-	public function produk_update()
+	public function paket_update()
 	{
 		// Wajib isi judul,konten dan kategori
 		$this->form_validation->set_rules('nama','nama','required');
@@ -446,7 +446,7 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function produk_hapus($id)
+	public function paket_hapus($id)
 	{
 		$where = array(
 			'produk_id' => $id
@@ -464,9 +464,9 @@ class Dashboard extends CI_Controller {
 		@unlink('./gambar/produk/'.$produk->produk_foto3);
 
 		$this->m_data->delete_data($where,'produk');
-		redirect(base_url().'dashboard/produk');
+		redirect(base_url().'dashboard/paket');
 	}
-	// end crud produk
+	// end crud paket
 
 
 	// CRUD transaksi
