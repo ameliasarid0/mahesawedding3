@@ -2,32 +2,40 @@
       <br>
       <div class="tabular--wrapper">
         <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="2">DATA CUSTOMER</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th width="%">Nama</th>
-				                <th width="1px">:</th>
-				                <th>
-				                </th>
-				            </tr>
-					          <tr>
-					            <th width="20%">Username</th>
-					            <th width="1px">:</th>
-					            <th></th>
-					          </tr>
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3">DATA CUSTOMER</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <?php 
+							$id = $_SESSION['customer_id'];
+							$customer = $this->db->query("select * from customer where customer_id='$id'");
+							$i = $customer->row();
+							?>
+							<tr>
+								<th width="20%">Nama</th>	
+								<td><?php echo $i->customer_nama ?></td>
+							</tr>
+							<tr>
+								<th width="20%">Email</th>	
+								<td><?php echo $i->customer_email ?></td>
+							</tr>
+							<tr>
+								<th>HP</th>	
+								<td><?php echo $i->customer_hp ?></td>
+							</tr>
+							<tr>
+								<th>Alamat</th>	
+								<td><?php echo $i->customer_alamat ?></td>
+				        </th>
+                </tr>
                     </tbody>
                     <tfoot>
                     </tfoot>
                 </table>
-                <br>
-                <a><h3 class="main--title">
-                <input type="submit" class="btn btn-sm btn-primary" value="SIMPAN">
-                </h3></a>
             </form>
         </div>
         </div>

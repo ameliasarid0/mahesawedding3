@@ -14,7 +14,7 @@
       <h2 class="inactive underlineHover"><a href="<?php echo base_url('login/cust') ?>"> Customer </a></h2>
       <!-- Icon -->
       <div class="fadeIn first">
-        <img src="img/mahesa_logo.png" id="icon" />
+        <img src="<?php echo base_url() ?>img/mahesa_logo.png" id="icon" />
       </div>
   
       <!-- Login Form -->

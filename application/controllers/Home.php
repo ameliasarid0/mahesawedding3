@@ -2,7 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
+	function __construct()
+	{
+		parent::__construct();
 
+		date_default_timezone_set('Asia/Jakarta');
+		$this->load->model('m_data');
+
+		// maka halaman akan di alihkan kembali ke halaman login.
+		if($this->session->userdata('status')=="telah_login"){
+			redirect(base_url('home/customer'));
+		}
+		
+	}
 
 
     public function index()
@@ -16,56 +28,36 @@ class Home extends CI_Controller {
 
 	public function masuk_act()
 	{
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
+		// menangkap data yang dikirim dari form
+		$email = $this->input->post('email');
+		$password = md5($this->input->post('password'));
 
-		if($this->form_validation->run() != false){
-
-			// menangkap data username dan password dari halaman login
-			$username = $this->input->post('username');
-			$password = $this->input->post('password');
-
-			$where = array(
-				'customer_email' => $username,
-				'customer_password' => md5($password),
-			);
-
-			$this->load->model('m_data');
-
-			// cek kesesuaian login pada table admin
-			$cek = $this->m_data->cek_login('customer',$where)->num_rows();
-
-			// cek jika login benar
-			if($cek > 0){
-
-				// ambil data admin yang melakukan login
-				$data = $this->m_data->cek_login('customer',$where)->row();
-
-				// buat session untuk admin yang berhasil login
-				$data_session = array(
-					'id' => $data->customer_id,
-					'username' => $data->customer_username,
-					'status' => "telah_login"
-				);
-				$this->session->set_userdata($data_session);
-
-				// alihkan halaman ke halaman dashboard admin
-
-				redirect(base_url().'home/customer');
-			}else{
-				redirect(base_url().'home/masuk?alert=gagal');
-			}
-
+		$login = $this->db->query("SELECT * FROM customer WHERE customer_email='$email' AND customer_password='$password'");
+		$cek = $login->num_rows();
+		
+		if($cek > 0){
+			$data = $login->row();
+		
+			// hapus session yg lain, agar tidak bentrok dengan session customer
+			unset($_SESSION['id']);
+			unset($_SESSION['nama']);
+			unset($_SESSION['username']);
+			unset($_SESSION['status']);
+		
+			// buat session customer
+			$_SESSION['customer_id'] = $data->customer_id;
+			$_SESSION['customer_status'] = "login";
+			redirect(base_url()."home/customer");
 		}else{
-			$this->load->view('home/masuk');
-			
+			redirect(base_url()."login/cust?alert=gagal");
 		}
 	}
 
 	public function customer()
 	{
+		$data['customer'] = $this->m_data->get_data('customer')->result();
 		$this->load->view('frontend/v_header');
-		$this->load->view('frontend/v_customer');
+		$this->load->view('frontend/v_customer',$data);
 		$this->load->view('frontend/v_footer');
 	}
 

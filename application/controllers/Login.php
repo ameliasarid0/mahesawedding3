@@ -117,7 +117,7 @@ class Login extends CI_Controller {
 
 				redirect(base_url().'home/customer');
 			}else{
-				redirect(base_url().'home/customer');
+				redirect(base_url().'login/cust?alert=gagal');
 			}
 
 		}else{

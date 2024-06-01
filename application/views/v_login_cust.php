@@ -18,10 +18,10 @@
       </div>
   
       <!-- Login Form -->
-      <form action="<?php echo base_url().'login/custaksi' ?>" method="post">
-        <input type="email" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <form action="<?php echo base_url().'home/masuk_act' ?>" method="post">
+        <input type="text" id="email" required="required" class="fadeIn second" name="email" placeholder="Username">
         <?php echo form_error('username'); ?>
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+        <input type="password" id="password" required="required" class="fadeIn third" name="password" placeholder="Password">
         <?php echo form_error('password'); ?>
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
