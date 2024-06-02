@@ -41,7 +41,7 @@
                     <div class="card--header">
                         <div class="amount">
                             <span class="title">Jumlah Paket</span>
-                            <span class="amount--value">6 paket</span>
+                            <span class="amount--value"><?php echo $jumlah_paket ?> paket</span>
                         </div>
                         <i class="fas fa-list icon dark-green"></i>
                     </div>

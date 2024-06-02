@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller {
 		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
 		// hitung jumlah halaman
 		$data['jumlah_invoice'] = $this->m_data->get_data('invoice')->num_rows();
+		$data['jumlah_paket'] = $this->m_data->get_data('produk')->num_rows();
 		$this->load->view('dashboard/v_header',$data);
 		$this->load->view('dashboard/v_index',$data);
 		$this->load->view('dashboard/v_footer',$data);
