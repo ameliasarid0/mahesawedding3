@@ -33,6 +33,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/v_footer',$data);
 	}
 
+
 	public function keluar()
 	{
 		$this->session->sess_destroy();
@@ -233,7 +234,7 @@ class Dashboard extends CI_Controller {
 	// CRUD ARTIKEL
 	public function paket()
 	{
-		$data['produk'] = $this->m_data->get_data('produk')->result();	
+		$data['produk'] = $this->db->query("SELECT * FROM produk,kategori where kategori_id=produk_kategori order by produk_id desc")->result();	
 		$this->load->view('dashboard/v_header');
 		$this->load->view('dashboard/v_paket',$data);
 		$this->load->view('dashboard/v_footer');
@@ -241,15 +242,18 @@ class Dashboard extends CI_Controller {
 
 	public function paket_tambah()
 	{
+		$data['kategori'] = $this->m_data->get_data('kategori')->result();
 		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_paket_tambah');
+		$this->load->view('dashboard/v_paket_tambah',$data);
 		$this->load->view('dashboard/v_footer');
 	}
 
 	public function paket_aksi()
 	{
 		$this->form_validation->set_rules('nama','nama','required');
+		$this->form_validation->set_rules('kategori','kategori','required');
 		$this->form_validation->set_rules('harga','harga','required');
+		$this->form_validation->set_rules('jumlah','jumlah','required');
 		$this->form_validation->set_rules('keterangan','keterangan','required');
 
 		if($this->form_validation->run() != false){
@@ -267,16 +271,38 @@ class Dashboard extends CI_Controller {
 				$foto1 = "";
 			}
 
+			if($this->upload->do_upload('foto2')){
+				$foto2 = $this->upload->do_upload('foto2');
+				$gambar1 = $this->upload->data();
+				$foto2 = $gambar1['file_name'];
+			}else{
+				$foto2 = "";
+			}
+
+			if($this->upload->do_upload('foto3')){
+				$foto3 = $this->upload->do_upload('foto3');
+				$gambar1 = $this->upload->data();
+				$foto3 = $gambar1['file_name'];
+			}else{
+				$foto3 = "";
+			}
+
 			$nama = $this->input->post('nama');
+			$kategori = $this->input->post('kategori');
 			$harga = $this->input->post('harga');
+			$jumlah = $this->input->post('jumlah');
 			$keterangan = $this->input->post('keterangan');
 
 
 			$data = array(
 				'produk_nama' => $nama,
+				'produk_kategori' => $kategori,
 				'produk_harga' => $harga,
+				'produk_jumlah' => $jumlah,
 				'produk_keterangan' => $keterangan,
 				'produk_foto1' => $foto1,
+				'produk_foto2' => $foto2,
+				'produk_foto3' => $foto3,
 			);
 
 			$this->m_data->insert_data($data,'produk');

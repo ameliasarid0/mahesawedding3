@@ -90,12 +90,12 @@
                             <td>
                             <select id="paket" class="fadeIn third" name="paket">
                                 <option value="--">Pilih Paket</option>
-                                <option value="PAKET 20JT" <?php if($c->customer_paket =="20JT") {?> selected <?php }?> >Paket 20JT</option>
-                                <option value="PAKET 22JT" <?php if($c->customer_paket =="22JT") {?> selected <?php }?> >Paket 22JT</option>
-                                <option value="PAKET 25JT" <?php if($c->customer_paket =="25JT") {?> selected <?php }?> >Paket 25JT</option>
-                                <option value="PAKET 27JT" <?php if($c->customer_paket =="27JT") {?> selected <?php }?> >Paket 27JT</option>
-                                <option value="PAKET 30JT" <?php if($c->customer_paket =="30JT") {?> selected <?php }?> >Paket 30JT</option>
-                                <option value="PAKET 35JT" <?php if($c->customer_paket =="35JT") {?> selected <?php }?> >Paket 35JT</option>
+                                <option value="PAKET 20JT" <?php if($c->customer_paket =="PAKET 20JT") {?> selected <?php }?> >Paket 20JT</option>
+                                <option value="PAKET 22JT" <?php if($c->customer_paket =="PAKET 22JT") {?> selected <?php }?> >Paket 22JT</option>
+                                <option value="PAKET 25JT" <?php if($c->customer_paket =="PAKET 25JT") {?> selected <?php }?> >Paket 25JT</option>
+                                <option value="PAKET 27JT" <?php if($c->customer_paket =="PAKET 27JT") {?> selected <?php }?> >Paket 27JT</option>
+                                <option value="PAKET 30JT" <?php if($c->customer_paket =="PAKET 30JT") {?> selected <?php }?> >Paket 30JT</option>
+                                <option value="PAKET 35JT" <?php if($c->customer_paket =="PAKET 35JT") {?> selected <?php }?> >Paket 35JT</option>
                             </select>
 							<?php echo form_error('paket'); ?>
                             </td>
