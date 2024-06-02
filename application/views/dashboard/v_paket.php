@@ -22,11 +22,9 @@
                         <tr>
                             <th width="1%">NO</th>
 							<th>NAMA PRODUK</th>
-							<th>KATEGORI</th>
 							<th>HARGA</th>
-							<th>JUMLAH</th>
 	    					<th width="20%">FOTO</th>
-							<th width="10%">OPSI</th>
+							<th width="10%" colspan="2">OPSI</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,9 +35,7 @@
 	    				<tr>
 			    			<td><?php echo $no++; ?></td>
 							<td><?php echo $p->produk_nama; ?></td>
-							<td><?php echo $p->kategori_nama; ?></td>
 							<td><?php echo "Rp. ".number_format($p->produk_harga).",-"; ?></td>
-							<td><?php echo number_format($p->produk_jumlah); ?></td>
 							<td>
 								<div class="row">
 								    <div class="col-md-3 no-padding">
@@ -75,6 +71,8 @@
 							</td>
 							<td>                        
 								<a href="<?php echo base_url().'dashboard/paket_edit/'.$p->produk_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
+							</td>
+							<td>
 								<a href="<?php echo base_url().'dashboard/paket_hapus/'.$p->produk_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
 							</td>
 						</tr>

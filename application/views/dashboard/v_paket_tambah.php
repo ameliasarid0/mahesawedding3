@@ -28,17 +28,18 @@
                     <tbody>
                             <td>Nama Paket</td>
                             <input type="hidden" name="id">
-                            <td><input type="text"></td>
+                            <td><input type="text" class="form-control" name="nama" placeholder="Masukkan nama paket"></td>
                         </tr>
                         <tr>
                             <td>Harga</td>
-                            <td><input type="number"></td>
+                            <td><input type="number" class="form-control" name="harga" placeholder="Masukkan harga paket"></td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
-                            <td><input type="text">
+                            <td><input type="text" class="form-control" name="keterangan" placeholder="Masukkan keterangan paket">
                             </td>
                         </tr>
+                        
                     </tbody>
                     <tfoot>
                     </tfoot>

@@ -33,12 +33,12 @@
 </select>
 <select id="paket" class="fadeIn third" name="paket">
   <option value="--">Pilih Paket</option>
-  <option value="20JT">Paket 20JT</option>
-  <option value="22JT">Paket 22JT</option>
-  <option value="25JT">Paket 25JT</option>
-  <option value="27JT">Paket 27JT</option>
-  <option value="30JT">Paket 30JT</option>
-  <option value="35JT">Paket 35JT</option>
+  <option value="PAKET 20JT">Paket 20JT</option>
+  <option value="PAKET 22JT">Paket 22JT</option>
+  <option value="PAKET 25JT">Paket 25JT</option>
+  <option value="PAKET 27JT">Paket 27JT</option>
+  <option value="PAKET 30JT">Paket 30JT</option>
+  <option value="PAKET 35JT">Paket 35JT</option>
 </select>
 <font color="#19709c">Tanggal Resepsi</font>
 <input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi">
@@ -51,7 +51,7 @@ UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
 </font>
 <h3>
 TRANSFER HANYA MELALUI REK 
-BCA 37808990101 A/N MAHESA WEDDING GALLERY
+BCA 37808990101 A/N MAHESA WEDDING GALLERY 
 --Silahkan Upload Bukti Bayar--
 </h3>
         <input type="file" id="foto" class="fadeIn third" name="foto" placeholder="Bukti Bayar" accept="image/*">

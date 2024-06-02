@@ -21,11 +21,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('frontend/v_index'); 
 	}
-	public function masuk()
-	{
-		$this->load->view('frontend/v_masuk');
-	}
-
+	
 	public function masuk_act()
 	{
 		// menangkap data yang dikirim dari form
@@ -64,7 +60,7 @@ class Home extends CI_Controller {
 	public function keluar()
 	{
 		$this->session->sess_destroy();
-		redirect(base_url().'home');
+		redirect(base_url().'login/cust');
 	}
 
 	public function daftar()
