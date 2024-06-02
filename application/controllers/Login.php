@@ -30,7 +30,6 @@ class Login extends CI_Controller {
 
 	public function adminaksi()
 	{
-
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
@@ -39,7 +38,7 @@ class Login extends CI_Controller {
 			// menangkap data username dan password dari halaman login
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-
+			
 			$where = array(
 				'admin_username' => $username,
 				'admin_password' => md5($password)
