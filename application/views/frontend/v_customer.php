@@ -14,20 +14,15 @@
             <tbody>
             <tr>
 							<tr>
-								<td width="20%">Nama</td>	
-								<td><?php echo $i->customer_nama ?></td>
+								<th width="20%">Nama</th>
+								<th width="2%">:</th>	
+								<th><?php echo $i->customer_nama ?></th>
 							</tr>
 							<tr>
-								<td width="20%">Email</td>	
-								<td><?php echo $i->customer_email ?></td>
+								<th width="20%">Username</th>
+								<th width="2%">:</th>		
+								<th><?php echo $i->customer_email ?></th>
 							</tr>
-							<tr>
-								<td>HP</td>	
-								<td><?php echo $i->customer_hp ?></td>
-							</tr>
-							<tr>
-								<td>Alamat</t>	
-								<td><?php echo $i->customer_alamat ?></td>
 				        </th>
               </tr>
               </tbody>
@@ -36,8 +31,6 @@
           </table>
           </div>
         </div>
-    </div>
-
   
 
  

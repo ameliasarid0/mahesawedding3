@@ -23,6 +23,7 @@
                             <th width="1%">NO</th>
 							<th>NAMA PRODUK</th>
 							<th>HARGA</th>
+							<th width="25%">KETERANGAN</th>
 	    					<th width="20%">FOTO</th>
 							<th width="10%" colspan="2">OPSI</th>
                         </tr>
@@ -36,37 +37,20 @@
 			    			<td><?php echo $no++; ?></td>
 							<td><?php echo $p->produk_nama; ?></td>
 							<td><?php echo "Rp. ".number_format($p->produk_harga).",-"; ?></td>
+							<td><?php echo $p->produk_keterangan; ?></td>
 							<td>
 								<div class="row">
 								    <div class="col-md-3 no-padding">
 									<center>
-									    <?php if($p->produk_foto1 == ""){ ?>
-							    	        <img src="<?php echo base_url(); ?>/gambar/sistem/produk.png" style="width: 100%;height: auto">
+									    <?php if($p->produk_foto == ""){ ?>
+							    	        <img src="<?php echo base_url(); ?>/img/paket_produk/paket.jpg" style="width: 100%;height: auto">
 									    <?php }else{ ?>
-									        <img src="<?php echo base_url(); ?>/gambar/produk/<?php echo $p->produk_foto1; ?>" style="width: 100%;height: auto">
-		    						    <?php } ?>
-									</center>
-									</div>
-
-									<div class="col-md-3 no-padding">
-									<center>
-										<?php if($p->produk_foto2 == ""){ ?>
-				    						<img src="<?php echo base_url(); ?>/gambar/sistem/produk.png" style="width: 100%;height: auto">
-										<?php }else{ ?>
-							    			<img src="<?php echo base_url(); ?>/gambar/produk/<?php echo $p->produk_foto2; ?>" style="width: 100%;height: auto">
+											<a href="<?php echo base_url(); ?><?php echo $p->produk_foto; ?>">
+									        <img src="<?php echo base_url(); ?><?php echo $p->produk_foto; ?>" style="width: 100%;height: auto">
+											</a>
 										<?php } ?>
 									</center>
 									</div>
-
-								    <div class="col-md-3 no-padding">
-									<center>
-								        <?php if($p->produk_foto3 == ""){ ?>
-											<img src="<?php echo base_url(); ?>/gambar/sistem/produk.png" style="width: 100%;height: auto">
-										<?php }else{ ?>
-											<img src="<?php echo base_url(); ?>/gambar/produk/<?php echo $p->produk_foto3; ?>" style="width: 100%;height: auto">
-										<?php } ?>
-									</center>
-		    						</div>
 								</div>
 							</td>
 							<td>                        

@@ -36,10 +36,14 @@
                         </tr>
                         <tr>
                             <td>Keterangan</td>
-                            <td><input type="text" class="form-control" name="keterangan" placeholder="Masukkan keterangan paket">
+                            <td><input type="textarea" class="form-control" name="keterangan" placeholder="Masukkan keterangan paket">
                             </td>
                         </tr>
-                        
+                        <tr>
+                            <td>Foto Deskripsi</td>
+                            <td><input type="file" id="foto" class="form-control" name="foto" accept="image/*">
+                            </td>
+                        </tr>
                     </tbody>
                     <tfoot>
                     </tfoot>

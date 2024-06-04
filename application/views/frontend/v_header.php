@@ -21,7 +21,7 @@
               <a href="<?php echo base_url().'home/customer' ?>">
                 <h2>Dashboard</h2>
               </a>
-              <a href="<?php echo base_url().'home/customer' ?>">
+              <a href="<?php echo base_url().'home/pesanan' ?>">
                 <h2>Pesanan</h2>
               </a>
               <a href="<?php echo base_url().'home/customer' ?>">

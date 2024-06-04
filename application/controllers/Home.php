@@ -77,7 +77,7 @@ class Home extends CI_Controller {
 		$hp = $this->input->post('hp');
 		$password = $this->input->post('password');
 		$tglrsp = $this->input->post('tglrsp');
-		$alamatrsp = $this->input->post('alamatrsp');
+		$lokasirsp = $this->input->post('lokasirsp');
 		$kota = $this->input->post('kota');
 		$paket = $this->input->post('paket');
 		$foto = $_FILES["foto"] ["tmp_name"];
@@ -96,7 +96,7 @@ class Home extends CI_Controller {
 				'customer_hp' => $hp,
 				'customer_password' => $password,
 				'customer_tglrsp' => $tglrsp,
-				'customer_alamatrsp' => $alamatrsp,
+				'customer_lokasirsp' => $lokasirsp,
 				'customer_alamat' => $alamat,
 				'customer_kota' => $kota,
 				'customer_paket' => $paket,
@@ -111,6 +111,15 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/v_daftarberhasil');
 	}
 
-	
+	public function pesanan()
+	{
+		$data['customer'] = $this->m_data->get_data('customer')->result();
+		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$this->load->view('frontend/v_header');
+		$this->load->view('frontend/v_customer',$data);
+		$this->load->view('frontend/v_pesanan',$data);
+		$this->load->view('frontend/v_footer');
+	}
+
 }
 

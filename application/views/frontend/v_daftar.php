@@ -23,7 +23,7 @@
 
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 
-<input type="text" id="alamat" class="fadeIn third" name="alamatrsp" placeholder="Alamat Resepsi">
+<input type="text" id="alamat" class="fadeIn third" name="lokasirsp" placeholder="Lokasi Resepsi">
 <select id="kota" class="fadeIn third" name="kota">
 <option value="--">Pilih Kota</option>
   <option value="Karawang">Karawang</option>

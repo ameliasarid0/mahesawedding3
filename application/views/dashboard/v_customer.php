@@ -20,11 +20,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="10%">NO</th>
+                            <th width="5%">NO</th>
                             <th>NAMA</th>
                             <th>EMAIL</th>
                             <th>HP</th>
                             <th>ALAMAT</th>
+                            <th>KOTA</th>
                             <th width="10%" colspan="2">OPSI</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                             <td><?php echo $c->customer_email; ?></td>
                             <td><?php echo $c->customer_hp; ?></td>
                             <td><?php echo $c->customer_alamat; ?></td>
+                            <td><?php echo $c->customer_kota; ?></td>
                             <td>            
                             <a href="<?php echo base_url().'dashboard/customer_edit/'.$c->customer_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
                             </td>

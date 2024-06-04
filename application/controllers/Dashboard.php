@@ -22,11 +22,8 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		// hitung jumlah kategori
 		$data['jumlah_customer'] = $this->m_data->get_data('customer')->num_rows();
-		// hitung jumlah admin
 		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
-		// hitung jumlah halaman
 		$data['jumlah_invoice'] = $this->m_data->get_data('invoice')->num_rows();
 		$data['jumlah_paket'] = $this->m_data->get_data('produk')->num_rows();
 		$this->load->view('dashboard/v_header',$data);
@@ -235,7 +232,7 @@ class Dashboard extends CI_Controller {
 	// CRUD ARTIKEL
 	public function paket()
 	{
-		$data['produk'] = $this->db->query("SELECT * FROM produk,kategori where kategori_id=produk_kategori order by produk_id desc")->result();	
+		$data['produk'] = $this->m_data->get_data('produk')->result();	
 		$this->load->view('dashboard/v_header');
 		$this->load->view('dashboard/v_paket',$data);
 		$this->load->view('dashboard/v_footer');
@@ -243,7 +240,7 @@ class Dashboard extends CI_Controller {
 
 	public function paket_tambah()
 	{
-		$data['kategori'] = $this->m_data->get_data('kategori')->result();
+		$data['produk'] = $this->m_data->get_data('produk')->result();
 		$this->load->view('dashboard/v_header');
 		$this->load->view('dashboard/v_paket_tambah',$data);
 		$this->load->view('dashboard/v_footer');
@@ -252,58 +249,24 @@ class Dashboard extends CI_Controller {
 	public function paket_aksi()
 	{
 		$this->form_validation->set_rules('nama','nama','required');
-		$this->form_validation->set_rules('kategori','kategori','required');
 		$this->form_validation->set_rules('harga','harga','required');
-		$this->form_validation->set_rules('jumlah','jumlah','required');
 		$this->form_validation->set_rules('keterangan','keterangan','required');
 
 		if($this->form_validation->run() != false){
-			$config['encrypt_name'] = TRUE;
-			$config['upload_path']   = './gambar/produk/';
-			$config['allowed_types'] = 'gif|jpg|png';
-
-			$this->load->library('upload', $config);
-
-			if($this->upload->do_upload('foto1')){
-				$foto1 = $this->upload->do_upload('foto1');
-				$gambar1 = $this->upload->data();
-				$foto1 = $gambar1['file_name'];
-			}else{
-				$foto1 = "";
-			}
-
-			if($this->upload->do_upload('foto2')){
-				$foto2 = $this->upload->do_upload('foto2');
-				$gambar1 = $this->upload->data();
-				$foto2 = $gambar1['file_name'];
-			}else{
-				$foto2 = "";
-			}
-
-			if($this->upload->do_upload('foto3')){
-				$foto3 = $this->upload->do_upload('foto3');
-				$gambar1 = $this->upload->data();
-				$foto3 = $gambar1['file_name'];
-			}else{
-				$foto3 = "";
-			}
-
 			$nama = $this->input->post('nama');
-			$kategori = $this->input->post('kategori');
 			$harga = $this->input->post('harga');
-			$jumlah = $this->input->post('jumlah');
 			$keterangan = $this->input->post('keterangan');
+			$foto_paket = $_FILES["foto"] ["tmp_name"];
 
+			$path = "/img/paket_produk/";
+			$imagePath = $path . $nama. "_gambar.jpg";
+			move_uploaded_file($foto_paket, $imagePath);
 
 			$data = array(
 				'produk_nama' => $nama,
-				'produk_kategori' => $kategori,
 				'produk_harga' => $harga,
-				'produk_jumlah' => $jumlah,
 				'produk_keterangan' => $keterangan,
-				'produk_foto1' => $foto1,
-				'produk_foto2' => $foto2,
-				'produk_foto3' => $foto3,
+				'produk_foto' => $imagePath,
 			);
 
 			$this->m_data->insert_data($data,'produk');
@@ -311,7 +274,7 @@ class Dashboard extends CI_Controller {
 			redirect(base_url().'dashboard/paket');	
 
 		}else{
-			$data['kategori'] = $this->m_data->get_data('kategori')->result();
+			$data['produk'] = $this->m_data->get_data('produk')->result();
 			$this->load->view('dashboard/v_header');
 			$this->load->view('dashboard/v_paket_tambah',$data);
 			$this->load->view('dashboard/v_footer');
@@ -325,7 +288,6 @@ class Dashboard extends CI_Controller {
 			'produk_id' => $id
 		);
 		$data['produk'] = $this->m_data->edit_data($where,'produk')->result();
-		$data['kategori'] = $this->m_data->get_data('kategori')->result();
 		$this->load->view('dashboard/v_header');
 		$this->load->view('dashboard/v_paket_edit',$data);
 		$this->load->view('dashboard/v_footer');
@@ -336,20 +298,20 @@ class Dashboard extends CI_Controller {
 	{
 		// Wajib isi judul,konten dan kategori
 		$this->form_validation->set_rules('nama','nama','required');
-		$this->form_validation->set_rules('kategori','kategori','required');
 		$this->form_validation->set_rules('harga','harga','required');
-		$this->form_validation->set_rules('jumlah','jumlah','required');
 		$this->form_validation->set_rules('keterangan','keterangan','required');
 
 		if($this->form_validation->run() != false){
 
 			$id = $this->input->post('id');
-
 			$nama = $this->input->post('nama');
-			$kategori = $this->input->post('kategori');
 			$harga = $this->input->post('harga');
-			$jumlah = $this->input->post('jumlah');
 			$keterangan = $this->input->post('keterangan');
+			$foto_paket = $_FILES["foto"] ["tmp_name"];
+
+			$path = "img/paket_produk/";
+			$imagePath = $path . $nama. "_gambar.jpg";
+			move_uploaded_file($foto_paket, $imagePath);
 
 			$where = array(
 				'produk_id' => $id
@@ -357,66 +319,12 @@ class Dashboard extends CI_Controller {
 
 			$data = array(
 				'produk_nama' => $nama,
-				'produk_kategori' => $kategori,
 				'produk_harga' => $harga,
-				'produk_jumlah' => $jumlah,
-				'produk_keterangan' => $keterangan
+				'produk_keterangan' => $keterangan,
+				'produk_foto' => $imagePath,
 			);
 
 			$this->m_data->update_data($where,$data,'produk');
-
-			$detail_produk = $this->m_data->edit_data($where,'produk')->row();
-
-			$config['encrypt_name'] = TRUE;
-			$config['upload_path']   = './gambar/produk/';
-			$config['allowed_types'] = 'gif|jpg|png';
-
-			if(!empty($_FILES['foto1']['name'])){
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('foto1')) {
-
-
-					@chmod('./gambar/produk/'.$detail_produk->produk_foto1, 0777);
-					@unlink('./gambar/produk/'.$detail_produk->produk_foto1);
-
-					$gambar = $this->upload->data();
-					$data = array(
-						'produk_foto1' => $gambar['file_name'],
-					);
-					$this->m_data->update_data($where,$data,'produk');
-				}
-			}
-
-			if(!empty($_FILES['foto2']['name'])){
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('foto2')) {
-
-					@chmod('./gambar/produk/'.$detail_produk->produk_foto2, 0777);
-					@unlink('./gambar/produk/'.$detail_produk->produk_foto2);
-
-					$gambar = $this->upload->data();
-					$data = array(
-						'produk_foto2' => $gambar['file_name'],
-					);
-					$this->m_data->update_data($where,$data,'produk');
-				}
-			}
-
-			if(!empty($_FILES['foto3']['name'])){
-
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('foto3')) {
-
-					@chmod('./gambar/produk/'.$detail_produk->produk_foto3, 0777);
-					@unlink('./gambar/produk/'.$detail_produk->produk_foto3);
-
-					$gambar = $this->upload->data();
-					$data = array(
-						'produk_foto3' => $gambar['file_name'],
-					);
-					$this->m_data->update_data($where,$data,'produk');
-				}
-			}
 
 			redirect(base_url().'dashboard/paket');
 
@@ -426,7 +334,6 @@ class Dashboard extends CI_Controller {
 				'produk_id' => $id
 			);
 			$data['produk'] = $this->m_data->edit_data($where,'produk')->result();
-			$data['kategori'] = $this->m_data->get_data('kategori')->result();
 			$this->load->view('dashboard/v_header');
 			$this->load->view('dashboard/v_paket_edit',$data);
 			$this->load->view('dashboard/v_footer');
