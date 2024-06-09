@@ -50,8 +50,16 @@
                 <div class="payment--card light-blue">
                     <div class="card--header">
                         <div class="amount">
+                            <?php
+                            $jumlah = $this->db->query("select sum(total) as jumlah from detailpembayaran");
+
+                            foreach ($jumlah->result() as $bayar)
+                            {
+                            ?>
                             <span class="title">Total Transaksi</span>
-                            <span class="amount--value">150 JT</span>
+                            <span class="amount--value"><?php echo "Rp ".number_format($bayar->jumlah)."JT"; ?></span>
+                    <?php } ?>
+                            
                         </div>
                         <i class="fa-solid fa-dollar icon dark-green"></i>
                     </div>

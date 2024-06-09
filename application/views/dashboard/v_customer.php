@@ -15,17 +15,30 @@
             </div>
         </div>
         <div class="tabular--wrapper">
-            <a href="<?php echo base_url().'dashboard/customer_tambah'; ?>"><h3 class="main--title">Tambah Customer</h3></a>
+            <a href="<?php echo base_url().'home/daftar'; ?>"><h3 class="main--title">Tambah Customer</h3></a>
             <div class="table-container">
                 <table>
                     <thead>
+                        <?php 
+						if(isset($_GET['alert'])){
+							if($_GET['alert'] == "gagal"){
+								echo "<div class='alert error'>Update data gagal</div>";
+							}elseif($_GET['alert'] == "berhasil"){
+								echo "<div class='alert success'><strong>Update data berhasil</div>";
+                            }elseif($_GET['alert'] == "hapus"){
+								echo "<div class='alert error'><strong>Data sudah dihapus</div>";
+							}elseif($_GET['alert'] == "tambah"){
+								echo "<div class='alert success'>Data berhasil ditambahkan</div>";
+							}
+						}
+						?>
                         <tr>
                             <th width="5%">NO</th>
                             <th>NAMA</th>
                             <th>EMAIL</th>
-                            <th>HP</th>
-                            <th>ALAMAT</th>
-                            <th>KOTA</th>
+                            <th>NO HP</th>
+                            <th>STATUS AKUN</th>
+                            <th width="10%">BUKTI BAYAR</th>
                             <th width="10%" colspan="2">OPSI</th>
                         </tr>
                     </thead>
@@ -39,13 +52,17 @@
                             <td><?php echo $c->customer_nama; ?></td>
                             <td><?php echo $c->customer_email; ?></td>
                             <td><?php echo $c->customer_hp; ?></td>
-                            <td><?php echo $c->customer_alamat; ?></td>
-                            <td><?php echo $c->customer_kota; ?></td>
+                            <td><strong><?php echo $c->customer_status; ?></strong></td>
+                            <td>                                
+                                <a href="<?php echo base_url(); ?><?php echo $c->customer_bukti; ?>">
+								<img src="<?php echo base_url(); ?><?php echo $c->customer_bukti; ?>" style="width: 100%;height: auto">
+								</a>
+                            </td>
                             <td>            
                             <a href="<?php echo base_url().'dashboard/customer_edit/'.$c->customer_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
                             </td>
                             <td>
-                            <a href="<?php echo base_url().'dashboard/customer_hapus/'.$c->customer_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+                            <a onclick="return confirm('Yakin menghapus <?php echo $c->customer_nama; ?> ?')" href="<?php echo base_url().'dashboard/customer_hapus/'.$c->customer_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
                             </td>
                         </tr>
                         <?php 

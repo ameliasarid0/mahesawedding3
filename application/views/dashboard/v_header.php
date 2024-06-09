@@ -43,14 +43,14 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url().'dashboard/transaksi' ?>">
+                <a href="<?php echo base_url().'dashboard/pesanan' ?>">
                     <i class="fas fa-usd"></i>
                     <span>Pesanan</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url().'dashboard/laporan' ?>">
                     <i class="fas fa-file"></i>
                     <span>Laporan</span>
                 </a>

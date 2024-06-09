@@ -13,47 +13,48 @@
 			?>
             <thead>
               <tr>
-                <th colspan="3">DATA PESANAN</th>
+                <th colspan="4">DATA PESANAN</th>
               </tr>
             </thead>
             <tbody align="left">
-            <tr>
-							<tr>
-								<td width="20%">Tanggal Resepsi</td>
-								<td><?php echo $i->customer_tglrsp ?></td>
-                                <td rowspan="7" width="30%">
-                                <a href="<?php echo base_url(); ?><?php echo $p->produk_foto; ?>">
+              <tr>
+              <td width="20%">Nama Lengkap</td>
+              <td><?php echo $i->customer_nama ?></td>
+              <td rowspan="8" width="30%">
+                <a href="<?php echo base_url(); ?><?php echo $p->produk_foto; ?>">
 								<img src="<?php echo base_url(); ?><?php echo $p->produk_foto; ?>" style="width: 100%;height: auto">
 								</a>
-                                </td>
+              </td>
+              </tr>
+              <tr>
+								<td >Tanggal Resepsi</td>
+								<td><?php echo $i->customer_tglrsp ?></td>
 							</tr>
 							<tr>
-								<td width="20%">Lokasi</td>		
+								<td>Lokasi Resepsi</td>		
 								<td><?php echo $i->customer_lokasirsp ?></td>
 							</tr>
 							<tr>
 								<td>Kota</td>	
 								<td><?php echo $i->customer_kota ?></td>
-                            </tr>
-                            <tr>
-								<td>HP</td>	
+              </tr>
+              <tr>
+								<td>No Telepon</td>	
 								<td><?php echo $i->customer_hp ?></td>
-							</tr>
-                            <tr>
+						  </tr>
+              <tr>
 								<td>Paket</td>	
 								<td><?php echo $i->customer_paket ?></td>
-                            </tr>
-                            <tr>
-								<td>Harga</td>	
+              </tr>
+              <tr>
+								<td>Harga Paket</td>	
 								<td><?php echo "Rp. ".number_format($p->produk_harga).",-"; ?></td>
-                            </tr>
-                            <tr>
+              </tr>
+              <tr>
 								<td>Keterangan</td>	
 								<td><?php echo $p->produk_keterangan ?></td>
-                            </tr>
-				        </th>
               </tr>
-              </tbody>
+            </tbody>
               <tfoot>
               </tfoot>
           </table>

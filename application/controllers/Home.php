@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 		$this->load->model('m_data');
 
 		// maka halaman akan di alihkan kembali ke halaman login.
-		if($this->session->userdata('status')=="telah_login"){
+		if($this->session->userdata('status')=="login"){
 			redirect(base_url('home/customer'));
 		}
 		
@@ -64,7 +64,8 @@ class Home extends CI_Controller {
 
 	public function daftar()
 	{
-		$this->load->view('frontend/v_daftar');
+		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$this->load->view('frontend/v_daftar', $data);
 	}
 	
 	public function daftaraksi()
@@ -75,11 +76,12 @@ class Home extends CI_Controller {
 		$email = $this->input->post('email');
 		$alamat = $this->input->post('alamat');
 		$hp = $this->input->post('hp');
-		$password = $this->input->post('password');
 		$tglrsp = $this->input->post('tglrsp');
 		$lokasirsp = $this->input->post('lokasirsp');
 		$kota = $this->input->post('kota');
 		$paket = $this->input->post('paket');
+		$ttl = $this->input->post('ttl'); 
+		$status = $this->input->post('status');
 		$foto = $_FILES["foto"] ["tmp_name"];
 
 		$path = "img/bukti_bayar/";
@@ -87,38 +89,139 @@ class Home extends CI_Controller {
 		move_uploaded_file($foto, $imagePath);
 		// echo $email;
 		$cek_email = $this->db->query("select * from customer where customer_email='$email'");
+		$cek_tanggal= $this->db->query("select * from customer where customer_tglrsp='$tglrsp'");
 		if($cek_email->num_rows() > 0){
 			redirect(base_url().'home/daftar?alert=duplikat'); 
+		}elseif($cek_tanggal->num_rows() > 0){
+			redirect(base_url().'home/daftar?alert=tanggalpenuh'); 
 		}else{
 			$data = array(
 				'customer_nama' => $nama,
 				'customer_email' => $email,
 				'customer_hp' => $hp,
-				'customer_password' => $password,
 				'customer_tglrsp' => $tglrsp,
 				'customer_lokasirsp' => $lokasirsp,
 				'customer_alamat' => $alamat,
 				'customer_kota' => $kota,
 				'customer_paket' => $paket,
+				'customer_ttl' => $ttl,
+				'customer_status' => $status,
 				'customer_bukti' => $imagePath,
 			);
 			$this->m_data->insert_data($data,'customer');
-			redirect(base_url().'home/daftarberhasil?alert=menunggukonfirmasi');
+			
+			$where = array(
+				'customer_email' => $email,
+			);
+			$data['customer'] = $this->m_data->edit_data($where,'customer')->result();
+			$id = $this->db->query("SELECT customer_id FROM customer where customer_email='$email'");
+			$i = $id->row();
+			$customerid = $i->customer_id;
+			$data = array(
+				'customer_id' => $customerid,
+			);
+			$this->m_data->insert_data($data,'detailpembayaran');
+			redirect(base_url().'home/daftar?alert=menunggukonfirmasi');
 		}
-	}
-	public function daftarberhasil()
-	{
-		$this->load->view('frontend/v_daftarberhasil');
+
+		$this->m_data->insert_data($data,'detailpembayaran');
 	}
 
 	public function pesanan()
 	{
 		$data['customer'] = $this->m_data->get_data('customer')->result();
 		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$data['detailpembayaran'] = $this->m_data->get_data('detailpembayaran')->result();
 		$this->load->view('frontend/v_header');
-		$this->load->view('frontend/v_customer',$data);
 		$this->load->view('frontend/v_pesanan',$data);
 		$this->load->view('frontend/v_footer');
+	}
+
+	public function pembayaran($id)
+	{
+		$where = array(
+			'customer_id' => $id
+		);
+
+		$data['customer'] = $this->m_data->edit_data($where,'customer')->result();
+		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$data['pembayaran'] = $this->m_data->edit_data($where,'pembayaran')->result();
+		$data['detailpembayaran'] = $this->m_data->edit_data($where,'detailpembayaran')->result();
+		$this->load->view('frontend/v_header');
+		$this->load->view('frontend/v_pembayaran',$data);
+		$this->load->view('frontend/v_footer');
+
+	}
+
+	public function pembayaranaksi()
+	{
+		$this->load->model('m_data');
+
+		$jenisbayar = $this->input->post('jenisbayar');
+		$nominal = $this->input->post('nominal');
+		$customerid = $this->input->post('id');
+		$status = $this->input->post('status');
+		$foto = $_FILES["foto"] ["tmp_name"];
+
+		$path = "img/bukti_transaksi/";
+		$imagePath = $path .$jenisbayar. $customerid. "_bukti.jpg";
+		move_uploaded_file($foto, $imagePath);
+
+		$data = array(
+			'jenis_bayar' => $jenisbayar,
+			'customer_id' => $customerid,
+			'nominal_bayar' => $nominal,
+			'status_bayar' => $status,
+			'bukti_bayar' => $imagePath,
+		);
+		$this->m_data->insert_data($data,'pembayaran');
+
+
+		$where = array(
+			'customer_id' => $customerid
+		);
+
+		if($this->input->post('jenisbayar') == "DP1"){
+			$data = array(
+				'customer_id' => $customerid,
+				'dp1' => $nominal,
+				'status' => $status,
+			);
+		}elseif($this->input->post('jenisbayar') == "DP2"){
+			$data = array(
+				'dp2' => $nominal,
+				'status' => $status,
+			);
+		}elseif($this->input->post('jenisbayar') == "LNS"){
+			$data = array(
+				'customer_id' => $customerid,
+				'pelunasan' => $nominal,
+				'status' => $status,
+			);
+		}
+		
+		$this->m_data->update_data($where,$data,'detailpembayaran');
+
+		redirect(base_url().'home/pesanan');
+	}
+	public function totalbayar($id)
+	{
+		$this->load->model('m_data');
+
+		$total  = $this->input->post('total');
+
+		$where = array(
+			'customer_id' => $id
+		);
+		
+		$data = array(
+			'total' => $total,
+		);
+		$this->m_data->update_data($where,$data,'detailpembayaran');
+		$this->load->view('frontend/v_header');
+		$this->load->view('frontend/v_pesanan',$data);
+		$this->load->view('frontend/v_footer');
+
 	}
 
 }

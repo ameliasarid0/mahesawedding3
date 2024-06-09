@@ -24,8 +24,8 @@
               <a href="<?php echo base_url().'home/pesanan' ?>">
                 <h2>Pesanan</h2>
               </a>
-              <a href="<?php echo base_url().'home/customer' ?>">
-                <h2>Laporan</h2>
+              <a href="<?php echo base_url().'home/pembayaran/'.$i->customer_id; ?>">
+                <h2>Pembayaran</h2>
               </a>
               <a href="<?php echo base_url().'home/keluar' ?>">
                 <h2>Logout</h2>

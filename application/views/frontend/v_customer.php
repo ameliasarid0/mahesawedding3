@@ -8,7 +8,7 @@
 				  ?>
             <thead>
               <tr>
-                <th colspan="3">DATA CUSTOMER</th>
+                <th colspan="3">SELAMAT DATANG </th>
               </tr>
             </thead>
             <tbody>

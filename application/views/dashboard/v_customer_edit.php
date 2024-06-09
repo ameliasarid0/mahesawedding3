@@ -58,19 +58,25 @@
 								<?php echo form_error('alamat'); ?>
                             </td>
                         </tr>
+                        <tr> 
+                            <td>Tanggal Lahir</td>
+                            <td>
+                                <?php echo $c->customer_ttl; ?>
+                            </td>
+                        </tr>
                         <tr>
                             <td>Password</td>
                             <td>
                                 <input type="password" class="form-control" name="password" placeholder="Masukkan password customer" >
 								<?php echo form_error('password'); ?>
-                                <small>(Kosongkan jika tidak ingin diubah)</small>
+                                <small>(Update / Kosongkan jika tidak ingin diubah)</small>
                             </td>
                         </tr>
                         <tr>
-                            <td>Alamat Resepsi</td>
+                            <td>Lokasi Resepsi</td>
                             <td>
-                            <input type="text" class="form-control" name="alamatrsp" placeholder="Masukkan alamat resepsi" value="<?php echo $c->customer_alamatrsp; ?>">
-							<?php echo form_error('alamatrsp'); ?>
+                            <input type="text" class="form-control" name="lokasirsp" placeholder="Masukkan lokasi resepsi" value="<?php echo $c->customer_lokasirsp; ?>">
+							<?php echo form_error('lokasirsp'); ?>
                             </td>
                         </tr>
                         <tr>
@@ -83,6 +89,7 @@
                                 <option value="Subang" <?php if($c->customer_kota =="Subang") {?> selected <?php }?> >Subang</option>
                                 <option value="Purwakarta" <?php if($c->customer_kota =="Purwakarta") {?> selected <?php }?> >Purwakarta</option>
                             </select>
+                            <?php echo form_error('kota'); ?>
                             </td>
                         </tr>
                         <tr>
@@ -100,12 +107,23 @@
 							<?php echo form_error('paket'); ?>
                             </td>
                         </tr>
+                        <tr>
+                            <td><strong>STATUS AKUN</strong></td>
+                            <td>
+                            <select id="status" class="fadeIn third" name="status">
+                                <option value="BELUM AKTIF">BELUM AKTIF</option>
+                                <option value="AKTIF" <?php if($c->customer_status =="AKTIF") {?> selected <?php }?> >AKTIF</option>
+                            </select>
+                            <?php echo form_error('status'); ?>
+                            <small>(Wajib diubah jika akun sudah di seting/reset password)</small>
+                            </td>
+                        </tr>
                     </tbody>
                     <tfoot>
                     </tfoot>
                 </table>
                 <br>
-                <a><h3 class="main--title">
+                <a onclick="return confirm('Apakah status akun = <?php echo $c->customer_status; ?> , sudah benar ?')"><h3 class="main--title">
                 <input type="submit" class="btn btn-sm btn-primary" value="SIMPAN">
                 </h3></a>
             </form>

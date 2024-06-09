@@ -13,35 +13,46 @@
       <div class="fadeIn first">
         <img src="<?php echo base_url() ?>img/mahesa_logo.png" id="icon1" />
       </div>
+              <?php 
+							if(isset($_GET['alert'])){
+								if($_GET['alert'] == "duplikat"){
+									echo "<div class='alert error'>Email Sudah Terdaftar !!</div>";
+								}elseif($_GET['alert'] == "menunggukonfirmasi"){
+									echo "<div class='alert success'><strong>! ! DAFTAR SUDAH BERHASIL ! !<br>Silahkan menunggu konfirmasi username dan password yang akan dikirimkan melalui Email atau Whatsapp.</strong></div>";
+								}elseif($_GET['alert'] == "tanggalpenuh"){
+									echo "<div class='alert eror'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
+								}
+							}
+							?>
       <pre>
 <form action="<?php echo base_url().'home/daftaraksi' ?>" method="post" enctype="multipart/form-data">
-<input type="text" id="nama" class="fadeIn second" name="nama" placeholder="Nama Lengkap">
-<input type="email" id="email" class="fadeIn third" name="email" placeholder="Email">
-<input type="text" id="alamat" class="fadeIn third" name="alamat" placeholder="Alamat Tinggal">
-<input type="text" id="nohp" class="fadeIn third" name="hp" placeholder="Nomor Whatsapp">
-<input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+<input type="text" id="nama" class="fadeIn second" name="nama" placeholder="Nama Lengkap" required="required">
+<input type="email" id="email" class="fadeIn third" name="email" placeholder="Email" required="required">
+<input type="text" id="alamat" class="fadeIn third" name="alamat" placeholder="Alamat Tinggal" required="required">
+<input type="text" id="nohp" class="fadeIn third" name="hp" placeholder="Nomor Whatsapp" required="required">
+<font color="#19709c">Tanggal Lahir</font>
+<input type="date" id="ttl" class="fadeIn third" name="ttl" required="required">
 
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 
-<input type="text" id="alamat" class="fadeIn third" name="lokasirsp" placeholder="Lokasi Resepsi">
-<select id="kota" class="fadeIn third" name="kota">
+<input type="text" id="alamat" class="fadeIn third" name="lokasirsp" placeholder="Lokasi Resepsi" required="required">
+<select id="kota" class="fadeIn third" name="kota" required="required">
 <option value="--">Pilih Kota</option>
   <option value="Karawang">Karawang</option>
   <option value="Bekasi">Bekasi</option>
   <option value="Subang">Subang</option>
   <option value="Purwakarta">Purwakarta</option>
 </select>
-<select id="paket" class="fadeIn third" name="paket">
-  <option value="--">Pilih Paket</option>
-  <option value="PAKET 20JT">Paket 20JT</option>
-  <option value="PAKET 22JT">Paket 22JT</option>
-  <option value="PAKET 25JT">Paket 25JT</option>
-  <option value="PAKET 27JT">Paket 27JT</option>
-  <option value="PAKET 30JT">Paket 30JT</option>
-  <option value="PAKET 35JT">Paket 35JT</option>
+
+<select id="paket" class="fadeIn third" name="paket" required="required">
+  <?php foreach ($produk as $p){ ?>
+  <option value="<?php echo $p->produk_nama; ?>"><?php echo $p->produk_nama; ?></option>
+  <?php } ?>
 </select>
+
+
 <font color="#19709c">Tanggal Resepsi</font>
-<input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi">
+<input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi" required="required">
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 <font color="#19709c">
 !!  SYARAT DAN KETENTUAN  !!
@@ -54,8 +65,9 @@ TRANSFER HANYA MELALUI REK
 BCA 37808990101 A/N MAHESA WEDDING GALLERY 
 --Silahkan Upload Bukti Bayar--
 </h3>
-        <input type="file" id="foto" class="fadeIn third" name="foto" placeholder="Bukti Bayar" accept="image/*">
+        <input type="file" id="foto" class="fadeIn third" name="foto" placeholder="Bukti Bayar" accept="image/*" required="required">
         </pre>
+        <input type="hidden" id="status" class="fadeIn second" name="status" value="BELUM AKTIF">
         <input type="submit" class="fadeIn fourth" value="DAFTAR">
       </form>
     <form action="<?php echo base_url().'home' ?>" method="post">
@@ -67,3 +79,4 @@ BCA 37808990101 A/N MAHESA WEDDING GALLERY
     </div>
 </body>
 </html>
+

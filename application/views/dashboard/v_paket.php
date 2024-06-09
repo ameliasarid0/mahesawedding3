@@ -29,6 +29,19 @@
                         </tr>
                     </thead>
                     <tbody>
+						<?php 
+						if(isset($_GET['alert'])){
+							if($_GET['alert'] == "gagal"){
+								echo "<div class='alert error'>Update data gagal</div>";
+							}elseif($_GET['alert'] == "berhasil"){
+								echo "<div class='alert success'><strong>Update data berhasil</div>";
+							}elseif($_GET['alert'] == "hapus"){
+								echo "<div class='alert error'><strong>Data sudah dihapus</div>";
+							}elseif($_GET['alert'] == "tambah"){
+								echo "<div class='alert success'>Data berhasil ditambahkan</div>";
+							}
+						}
+						?>
                         <?php 
 						$no=1;
 						foreach($produk as $p){
@@ -57,7 +70,7 @@
 								<a href="<?php echo base_url().'dashboard/paket_edit/'.$p->produk_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
 							</td>
 							<td>
-								<a href="<?php echo base_url().'dashboard/paket_hapus/'.$p->produk_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+								<a onclick="return confirm('Yakin menghapus <?php echo $p->produk_nama; ?> ?')" href="<?php echo base_url().'dashboard/paket_hapus/'.$p->produk_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
 							</td>
 						</tr>
 						<?php 

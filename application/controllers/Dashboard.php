@@ -24,8 +24,8 @@ class Dashboard extends CI_Controller {
 	{
 		$data['jumlah_customer'] = $this->m_data->get_data('customer')->num_rows();
 		$data['jumlah_admin'] = $this->m_data->get_data('admin')->num_rows();
-		$data['jumlah_invoice'] = $this->m_data->get_data('invoice')->num_rows();
 		$data['jumlah_paket'] = $this->m_data->get_data('produk')->num_rows();
+		$data['detailpembayaran'] = $this->m_data->get_data('detailpembayaran')->result();
 		$this->load->view('dashboard/v_header',$data);
 		$this->load->view('dashboard/v_index',$data);
 		$this->load->view('dashboard/v_footer',$data);
@@ -104,54 +104,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/v_footer');
 	}
 
-	public function customer_tambah()
-	{
-		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_customer_tambah');
-		$this->load->view('dashboard/v_footer');
-	}
-
-	public function customer_aksi()
-	{
-		$this->form_validation->set_rules('nama','Nama','required');
-		$this->form_validation->set_rules('email','email','required');
-		$this->form_validation->set_rules('hp','hp','required');
-		$this->form_validation->set_rules('alamat','alamat','required');
-		$this->form_validation->set_rules('password','password','required');
-
-		if($this->form_validation->run() != false){
-
-			$nama = $this->input->post('nama');
-			$email = $this->input->post('email');
-			$hp = $this->input->post('hp');
-			$alamat = $this->input->post('alamat');
-			$password = $this->input->post('password');
-			$alamatrsp = $this->input->post('alamatrsp');
-			$kota = $this->input->post('kota');
-			$paket= $this->input->post('paket');
-
-			$data = array(
-				'customer_nama' => $nama,
-				'customer_email' => $email,
-				'customer_hp' => $hp,
-				'customer_alamat' => $alamat,
-				'customer_password' => md5($password),
-				'customer_alamatrsp' => $alamatrsp,
-				'customer_kota' => $kota,
-				'customer_paket' => $paket,
-			);
-
-			$this->m_data->insert_data($data,'customer');
-
-			redirect(base_url().'dashboard/customer');
-			
-		}else{
-			$this->load->view('dashboard/v_header');
-			$this->load->view('dashboard/v_customer_tambah');
-			$this->load->view('dashboard/v_footer');
-		}
-	}
-
 	public function customer_edit($id)
 	{
 		$where = array(
@@ -178,28 +130,42 @@ class Dashboard extends CI_Controller {
 			$hp = $this->input->post('hp');
 			$alamat = $this->input->post('alamat');
 			$password = $this->input->post('password');
-			$alamatrsp = $this->input->post('alamatrsp');
+			$lokasirsp = $this->input->post('lokasirsp');
 			$kota = $this->input->post('kota');
 			$paket= $this->input->post('paket');
+			$status= $this->input->post('status');
 
 			$where = array(
 				'customer_id' => $id
 			);
-
-			$data = array(
-				'customer_nama' => $nama,
-				'customer_email' => $email,
-				'customer_hp' => $hp,
-				'customer_alamat' => $alamat,
-				'customer_password' => md5($password),
-				'customer_alamatrsp' => $alamatrsp,
-				'customer_kota' => $kota,
-				'customer_paket' => $paket,
-			);
+			if($this->input->post('password') == ""){
+				$data = array(
+					'customer_nama' => $nama,
+					'customer_email' => $email,
+					'customer_hp' => $hp,
+					'customer_alamat' => $alamat,
+					'customer_lokasirsp' => $lokasirsp,
+					'customer_kota' => $kota,
+					'customer_paket' => $paket,
+					'customer_status' => $status,
+				);
+			}else{
+				$data = array(
+					'customer_nama' => $nama,
+					'customer_email' => $email,
+					'customer_hp' => $hp,
+					'customer_alamat' => $alamat,
+					'customer_password' => md5($password),
+					'customer_lokasirsp' => $lokasirsp,
+					'customer_kota' => $kota,
+					'customer_paket' => $paket,
+					'customer_status' => $status,
+				);
+			}
 
 			$this->m_data->update_data($where, $data,'customer');
 
-			redirect(base_url().'dashboard/customer');
+			redirect(base_url().'dashboard/customer?alert=berhasil');
 			
 		}else{
 
@@ -223,7 +189,7 @@ class Dashboard extends CI_Controller {
 
 		$this->m_data->delete_data($where,'customer');
 
-		redirect(base_url().'dashboard/customer');
+		redirect(base_url().'dashboard/customer?alert=hapus');
 	}
 	// END CRUD CUSTOMER
 
@@ -271,7 +237,7 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->insert_data($data,'produk');
 
-			redirect(base_url().'dashboard/paket');	
+			redirect(base_url().'dashboard/paket?alert=tambah');	
 
 		}else{
 			$data['produk'] = $this->m_data->get_data('produk')->result();
@@ -326,7 +292,7 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->update_data($where,$data,'produk');
 
-			redirect(base_url().'dashboard/paket');
+			redirect(base_url().'dashboard/paket?alert=berhasil');
 
 		}else{
 			$id = $this->input->post('id');
@@ -358,139 +324,9 @@ class Dashboard extends CI_Controller {
 		@unlink('./gambar/produk/'.$produk->produk_foto3);
 
 		$this->m_data->delete_data($where,'produk');
-		redirect(base_url().'dashboard/paket');
+		redirect(base_url().'dashboard/paket?alert=hapus');
 	}
 	// end crud paket
-
-
-	// CRUD transaksi
-	public function transaksi()
-	{
-		$data['transaksi'] = $this->db->query('select * from invoice,customer where customer_id=invoice_customer order by invoice_id desc')->result();
-		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_transaksi',$data);
-		$this->load->view('dashboard/v_footer');
-	}
-
-	public function transaksi_invoice($id_invoice)
-	{
-		$data['invoice'] = $this->db->query("select * from invoice where invoice_id='$id_invoice' order by invoice_id desc")->result();
-
-		$this->load->view('dashboard/v_header');
-		$this->load->view('dashboard/v_transaksi_invoice',$data);
-		$this->load->view('dashboard/v_footer');
-	}
-
-	public function transaksi_invoice_cetak($id_invoice)
-	{
-		$data['invoice'] = $this->db->query("select * from invoice where invoice_id='$id_invoice' order by invoice_id desc")->result();
-
-		$this->load->view('dashboard/v_transaksi_invoice_cetak',$data);
-	}
-
-
-
-	public function transaksi_status()
-	{
-		$invoice  = $this->input->post('invoice');
-		$status  = $this->input->post('status');
-		$where = array(
-			'invoice_id' => $invoice
-		);
-		$data = array(
-			'invoice_status' => $status
-		);
-		$this->m_data->update_data($where,$data,'invoice');
-		redirect(base_url().'dashboard/transaksi');
-	}
-
-
-	public function transaksi_hapus($id)
-	{
-
-		$lama = $this->db->query("select * from invoice where invoice_id='$id'");
-		$l = $lama->row();
-		$foto = $l->invoice_bukti;
-
-		@chmod('./gambar/bukti_pembayaran/'.$foto, 0777);
-		@unlink('./gambar/bukti_pembayaran/'.$foto);
-
-		$where = array(
-			'invoice_id' => $id
-		);
-
-		$this->m_data->delete_data($where,'invoice');
-
-		$where = array(
-			'transaksi_invoice' => $id
-		);
-
-		$this->m_data->delete_data($where,'transaksi');
-
-		redirect(base_url().'dashboard/transaksi');
-	}
-	// END CRUD transaksi
-
-
-
-
-
-
-	public function laporan()
-	{
-
-		if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari'])){
-
-			$tgl_dari = $_GET['tanggal_dari'];
-			$tgl_sampai = $_GET['tanggal_sampai'];
-			$data['data'] = $this->db->query("SELECT * FROM invoice,customer WHERE invoice_customer=customer_id and date(invoice_tanggal) >= '$tgl_dari' AND date(invoice_tanggal) <= '$tgl_sampai'")->result();
-			$this->load->view('dashboard/v_header');
-			$this->load->view('dashboard/v_laporan',$data);
-			$this->load->view('dashboard/v_footer');
-		}else{
-			$this->load->view('dashboard/v_header');
-			$this->load->view('dashboard/v_laporan');
-			$this->load->view('dashboard/v_footer');
-		}
-
-	}
-
-	public function laporan_print()
-	{
-
-		if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari'])){
-
-			$tgl_dari = $_GET['tanggal_dari'];
-			$tgl_sampai = $_GET['tanggal_sampai'];
-			$data['data'] = $this->db->query("SELECT * FROM invoice,customer WHERE invoice_customer=customer_id and date(invoice_tanggal) >= '$tgl_dari' AND date(invoice_tanggal) <= '$tgl_sampai'")->result();
-			$this->load->view('dashboard/v_laporan_print',$data);
-		}else{
-			$this->load->view('dashboard/v_laporan_print');
-		}
-
-	}
-
-
-	public function laporan_pdf()
-	{
-
-		if(isset($_GET['tanggal_sampai']) && isset($_GET['tanggal_dari'])){
-			$tgl_dari = $_GET['tanggal_dari'];
-			$tgl_sampai = $_GET['tanggal_sampai'];
-
-			$this->load->library('pdfgenerator');
-			$data['title_pdf'] = 'Laporan Penjualan';
-			$file_pdf = 'laporan_penjualan';
-			$paper = 'A4';
-			$orientation = "landscape";
-			$data['data'] = $this->db->query("SELECT * FROM invoice,customer WHERE invoice_customer=customer_id and date(invoice_tanggal) >= '$tgl_dari' AND date(invoice_tanggal) <= '$tgl_sampai'")->result();
-			$html = $this->load->view('dashboard/v_laporan_pdf',$data, true);	
-			$this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
-		}
-	}
-
-
-
 
 	// CRUD admin
 	public function admin()
@@ -544,7 +380,7 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->insert_data($data,'admin');
 
-			redirect(base_url().'dashboard/admin');	
+			redirect(base_url().'dashboard/admin?alert=tambah');	
 
 		}else{
 			$this->load->view('dashboard/v_header');
@@ -572,13 +408,6 @@ class Dashboard extends CI_Controller {
 		$this->form_validation->set_rules('username','Username admin','required');
 
 		if($this->form_validation->run() != false){
-
-			$config['encrypt_name'] = TRUE;
-			$config['upload_path']   = './gambar/user/';
-			$config['allowed_types'] = 'gif|jpg|png';
-
-			$this->load->library('upload', $config);
-
 			$id = $this->input->post('id');
 			$nama = $this->input->post('nama');
 			$username = $this->input->post('username');
@@ -587,24 +416,6 @@ class Dashboard extends CI_Controller {
 			$where = array(
 				'admin_id' => $id
 			);
-
-			$detail_admin = $this->m_data->edit_data($where,'admin')->row();
-
-			if(!empty($_FILES['foto']['name'])){
-
-				$this->load->library('upload', $config);
-				if ($this->upload->do_upload('foto')) {
-
-					@chmod('./gambar/user/'.$detail_admin->admin_foto, 0777);
-					@unlink('./gambar/user/'.$detail_admin->admin_foto);
-
-					$gambar = $this->upload->data();
-					$data = array(
-						'admin_foto' => $gambar['file_name'],
-					);
-					$this->m_data->update_data($where,$data,'admin');
-				}
-			}
 
 			if($this->input->post('password') == ""){
 				$data = array(
@@ -619,10 +430,9 @@ class Dashboard extends CI_Controller {
 				);
 			}
 
-
 			$this->m_data->update_data($where,$data,'admin');
 
-			redirect(base_url().'dashboard/admin');
+			redirect(base_url().'dashboard/admin?alert=berhasil');
 		}else{
 			$id = $this->input->post('id');
 			$where = array(
@@ -648,8 +458,73 @@ class Dashboard extends CI_Controller {
 
 		$this->m_data->delete_data($where,'admin');
 
-		redirect(base_url().'dashboard/admin');
+		redirect(base_url().'dashboard/admin?alert=hapus');
 	}
 	// end crud admin
+
+	/* CRUD PESANAN */
+	public function pesanan()
+	{
+
+		$data['customer'] = $this->m_data->get_data('customer')->result();
+		$data['detailpembayaran'] = $this->m_data->get_data('detailpembayaran')->result();
+		$this->load->view('dashboard/v_header');
+		$this->load->view('dashboard/v_pesanan',$data);
+		$this->load->view('dashboard/v_footer');
+	}
+
+	public function detailbayar($id)
+	{	
+		$where = array(
+			'customer_id' => $id
+		);
+
+		$data['customer'] = $this->m_data->edit_data($where,'customer')->result();
+		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$data['pembayaran'] = $this->m_data->edit_data($where,'pembayaran')->result();
+		$data['detailpembayaran'] = $this->m_data->edit_data($where,'detailpembayaran')->result();
+		$this->load->view('dashboard/v_header');
+		$this->load->view('dashboard/v_detailbayar',$data);
+		$this->load->view('dashboard/v_footer');
+	}
+
+	public function pembayaran_status()
+	{
+		$invoice  = $this->input->post('invoice');
+		$status  = $this->input->post('status');
+		$where = array(
+			'bayar_id' => $invoice 
+		);
+		$data = array(
+			'status_bayar' => $status
+		);
+		$this->m_data->update_data($where,$data,'pembayaran');
+		redirect(base_url().'dashboard/pesanan');
+	}
+
+	public function detailpesan($id)
+	{	
+		$where = array(
+			'customer_id' => $id
+		);
+
+		$data['customer'] = $this->m_data->edit_data($where,'customer')->result();
+		$data['produk'] = $this->m_data->get_data('produk')->result();
+		$this->load->view('dashboard/v_header');
+		$this->load->view('dashboard/v_detailpesan',$data);
+		$this->load->view('dashboard/v_footer');
+	}
+
+	//** CRUD Laporan */
+
+	public function laporan()
+	{
+		$data['customer'] = $this->m_data->get_data('customer')->result();
+		$data['pembayaran'] = $this->m_data->get_data('pembayaran')->result();
+		$data['detailpembayaran'] = $this->m_data->get_data('detailpembayaran')->result();
+		$this->load->view('dashboard/v_header');
+		$this->load->view('dashboard/v_laporan',$data);
+		$this->load->view('dashboard/v_footer');
+	}
 
 }

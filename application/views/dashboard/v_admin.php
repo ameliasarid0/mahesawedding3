@@ -28,6 +28,20 @@
                     </thead>
                     <tbody>
                         <?php 
+						if(isset($_GET['alert'])){
+							if($_GET['alert'] == "gagal"){
+								echo "<div class='alert error'>Update data gagal</div>";
+							}elseif($_GET['alert'] == "berhasil"){
+								echo "<div class='alert success'><strong>Update data berhasil</div>";
+                            }elseif($_GET['alert'] == "hapus"){
+								echo "<div class='alert error'><strong>Data sudah dihapus</div>";
+							}elseif($_GET['alert'] == "tambah"){
+								echo "<div class='alert success'>Data berhasil ditambahkan</div>";
+							}
+						}
+						?>
+
+                        <?php 
 						$no = 1;
 						foreach($admin as $p){ 
 						?>
@@ -40,7 +54,7 @@
 								<?php if($p->admin_id != 1){ ?>
                             </td>
                             <td>
-								<a onclick="return confirm('Yakin ?')" href="<?php echo base_url().'dashboard/admin_hapus/'.$p->admin_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+								<a onclick="return confirm('Yakin menghapus <?php echo $p->admin_nama; ?> ?')" href="<?php echo base_url().'dashboard/admin_hapus/'.$p->admin_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
 								<?php } ?>
 							</td>
 						</tr>
