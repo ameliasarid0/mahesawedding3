@@ -54,7 +54,7 @@
               </tr>
               <tr>
 					<td>No Telepon</td>	
-					<td><?php echo $i->customer_hp ?></td>
+					<td>0<?php echo $i->customer_hp ?></td>
 			  </tr>
               <tr>
 					<td>Paket</td>	

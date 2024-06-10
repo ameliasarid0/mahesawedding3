@@ -96,13 +96,7 @@
                             <option value="onprocess" <?php if($b->status_bayar =="onprocess") {?> selected <?php }?> >Menunggu Konfirmasi</option>
                             <option value="confirmed" <?php if($b->status_bayar =="confirmed") {?> selected <?php }?> >Pembayaran dikonfirmasi</option>
                         </select>
-                        </form> 
-                        <form action="<?php echo base_url('dashboard/nominal') ?>" method="post">
-                        <?php foreach ($customer as $c){?>
-                        <input type= "hidden" value="<?php echo $c->customer_id?>" name="customerid"> 
-                        <?php }?>
-                        <input type= "hidden" value="<?php echo $b->jenis_bayar?>" name="jenisbayar">
-                        <input type= "hidden" value="<?php echo number_format($b->nominal_bayar);?>" name="nominal">                         
+                        </form>                         
                     </td>
                 </tr>
                 <?php } ?>
@@ -110,6 +104,8 @@
                     <td colspan="3">Total Bayar</td>
                     <?php 
                     foreach($detailpembayaran as $d){
+                    $status = $b->status_bayar;
+                    if($status =="confirmed"){
                     $dp1 = $d->dp1;
                     $dp2 = $d->dp2;
                     $pelunasan = $d->pelunasan;
@@ -117,8 +113,14 @@
                     ?>
                         <td><b><?php echo "Rp. ".number_format($total).",-"; ?></b></td>
                     <?php } ?>
-
                     <td colspan="2" rowspan="2" align="center">
+                    <form action="<?php echo base_url('dashboard/nominal') ?>" method="post">
+                        
+                        <?php foreach ($customer as $c){?>
+                        <input type= "hidden" value="<?php echo $c->customer_id?>" name="customerid"> 
+                        <input type= "hidden" value="<?php echo $b->jenis_bayar?>" name="jenisbayar">
+                        <input type= "hidden" value="<?php echo number_format($b->nominal_bayar);?>" name="nominal"> 
+                    <?php }}?>
                     <input type="submit" class="btn btn-sm btn-primary" value="Update">
                     </form>
                 </td>

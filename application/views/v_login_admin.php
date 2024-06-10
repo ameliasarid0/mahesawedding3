@@ -29,7 +29,7 @@
       <!-- Remind Passowrd -->
       <div id="formFooter"> 
       <a class="underlineHover" href="<?php echo base_url().'home' ?>">Home | </a>
-      <a class="underlineHover" href="#">  Forgot Password?</a>
+      <a class="underlineHover" href="https://wa.link/cp6zg7">Forgot Password?</a>
       </div>
   
     </div>

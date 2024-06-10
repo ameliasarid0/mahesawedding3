@@ -19,11 +19,11 @@
             <table>            
             <thead>
                 <tr>
-                    <th width="20%">Tanggal </th>
+                    <th width="17%">Tanggal </th>
                     <th width="15%">Kode Referensi</th>
                     <th>Nama Customer</th>
                     <th width="5%">Foto</th>
-                    <th width="15%">Update Status</th>
+                    <th width="20%">Update Status</th>
                     <th width="15%">Nominal</th>
                 </tr>
             </thead>
@@ -56,13 +56,14 @@
 					</a>
                     </td>
                     <td align="center">
-                        <form action="<?php echo base_url('dashboard/pembayaran_status') ?>" method="post">
-                        <input type="hidden" value="<?php echo $b->bayar_id ?>" name="invoice">
-                        <select id="status" class="fadeIn third" name="status" onchange="form.submit()">
-                            <option value="onprocess" <?php if($b->status_bayar =="onprocess") {?> selected <?php }?> >Menunggu Konfirmasi</option>
-                            <option value="confirmed" <?php if($b->status_bayar =="confirmed") {?> selected <?php }?> >Pembayaran dikonfirmasi</option>
-                        </select>
-                        </form>                            
+                    <?php 
+                    $status=$b->status_bayar;
+                    if($status=="confirmed"){
+                        echo "Pembayaran dikonfirmasi";
+                    }else{
+                        echo "Menunggu Konfirmasi";
+                    }
+                    ?>                          
                     </td>
                     <td>
                         <?php echo "Rp. ".number_format($b->nominal_bayar).",-";?>

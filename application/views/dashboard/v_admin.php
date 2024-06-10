@@ -15,7 +15,12 @@
             </div>
         </div>
         <div class="tabular--wrapper">
+        <?php 
+			$id_user = $this->session->userdata('id');
+            if ($id_user ==1){
+		?>
             <a href="<?php echo base_url().'dashboard/admin_tambah'; ?>"><h3 class="main--title">Tambah Admin</h3></a>
+            <?php }?>
             <div class="table-container">
                 <table>
                     <thead>
@@ -23,7 +28,12 @@
                             <th width="10%">NO</th>
 						    <th>Nama</th>
 						    <th width="40%">Username</th>
+                            <?php 
+			                $id_user = $this->session->userdata('id');
+                            if ($id_user ==1){
+		                    ?>
 						    <th width="10%" colspan="2">OPSI</th>
+                            <?php }?>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,14 +59,17 @@
 							<td><?php echo $no++; ?></td>
 							<td><?php echo $p->admin_nama; ?></td>
 							<td><?php echo $p->admin_username; ?></td>
+                            <?php 
+			                $id_user = $this->session->userdata('id');
+                            if ($id_user ==1){
+		                    ?>
 							<td>
 								<a href="<?php echo base_url().'dashboard/admin_edit/'.$p->admin_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil">    </i> </a>
-								<?php if($p->admin_id != 1){ ?>
                             </td>
                             <td>
 								<a onclick="return confirm('Yakin menghapus <?php echo $p->admin_nama; ?> ?')" href="<?php echo base_url().'dashboard/admin_hapus/'.$p->admin_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
-								<?php } ?>
 							</td>
+                            <?php } ?>
 						</tr>
 						<?php } ?>
                     </tbody>

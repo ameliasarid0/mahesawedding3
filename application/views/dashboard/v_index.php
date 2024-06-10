@@ -57,7 +57,7 @@
                             {
                             ?>
                             <span class="title">Total Transaksi</span>
-                            <span class="amount--value"><?php echo "Rp ".number_format($bayar->jumlah)."JT"; ?></span>
+                            <span class="amount--value"><?php echo "Rp ".number_format($bayar->jumlah)."jt"; ?></span>
                     <?php } ?>
                             
                         </div>

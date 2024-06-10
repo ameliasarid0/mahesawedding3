@@ -24,13 +24,45 @@
                 <td colspan="2">
                 <select id="jenisbayar" class="fadeIn third" name="jenisbayar">
                   <option value="">Pilih</option>
-                  <option value="DP1">DP1</option>
-                  <option value="DP2">DP2</option>
-                  <option value="LNS">PELUNASAN</option>
+                  <option value="DP1">Uang Muka ke-1</option>
+                  <option value="DP2">Uang Muka ke-2</option>
+                  <option value="LNS">Pelunasan</option>
                 </select>
                 </td>	
                 <td>
-                    <input type="number" id="nominal" class="fadeIn third" name="nominal" required="required" placeholder="Masukan nominal">
+                <select id="nominal" class="fadeIn third" name="nominal" required="required">
+                  <option type="number" value="">Pilih</option>
+                  <option type="number" value="1000000">1.000.000,-</option>
+                  <option type="number" value="2000000">2.000.000,-</option>
+                  <option type="number" value="3000000">3.000.000,-</option>
+                  <option type="number" value="4000000">4.000.000,-</option>
+                  <option type="number" value="5000000">5.000.000,-</option>
+                  <option type="number" value="6000000">6.000.000,-</option>
+                  <option type="number" value="7000000">7.000.000,-</option>
+                  <option type="number" value="8000000">8.000.000,-</option>
+                  <option type="number" value="9000000">9.000.000,-</option>
+                  <option type="number" value="10000000">10.000.000,-</option>
+                  <option type="number" value="11000000">11.000.000,-</option>
+                  <option type="number" value="12000000">12.000.000,-</option>
+                  <option type="number" value="13000000">13.000.000,-</option>
+                  <option type="number" value="14000000">14.000.000,-</option>
+                  <option type="number" value="15000000">15.000.000,-</option>
+                  <option type="number" value="16000000">16.000.000,-</option>
+                  <option type="number" value="17000000">17.000.000,-</option>
+                  <option type="number" value="18000000">18.000.000,-</option>
+                  <option type="number" value="19000000">19.000.000,-</option>
+                  <option type="number" value="20000000">20.000.000,-</option>
+                  <option type="number" value="21000000">21.000.000,-</option>
+                  <option type="number" value="22000000">22.000.000,-</option>
+                  <option type="number" value="23000000">23.000.000,-</option>
+                  <option type="number" value="24000000">24.000.000,-</option>
+                  <option type="number" value="25000000">25.000.000,-</option>
+                  <option type="number" value="26000000">26.000.000,-</option>
+                  <option type="number" value="27000000">27.000.000,-</option>
+                  <option type="number" value="28000000">28.000.000,-</option>
+                  <option type="number" value="29000000">29.000.000,-</option>
+                  <option type="number" value="30000000">30.000.000,-</option>
+                </select>
                 </td>	
 				<td>
                   <input type="file" id="foto" class="fadeIn third" name="foto" required="required" placeholder="Bukti Bayar" accept="image/*">
@@ -135,8 +167,11 @@
                     $dp1 = $d->dp1;
                     $dp2 = $d->dp2;
                     $pelunasan = $d->pelunasan;
-                    $total = $dp1 + $dp2 + $pelunasan;
-                    if($total != 0){
+                    $total = $dp1 + $dp2 + $pelunasan;?>
+                    <form action="<?php echo base_url().'home/totalbayar'?>" method="post">
+                    <input type="hidden" name="total" value="<?php echo number_format($total);?>">
+                    
+                    <?php if($total != 0){
                     ?>
                     <th><b><?php echo "Rp. ".number_format($total).",-"; ?></b></th>
                     <?php }else{?>
@@ -166,14 +201,9 @@
                     <?php 
                     foreach($customer as $c){
                     ?>
-                    <form action="<?php echo base_url().'home/totalbayar/'.$c->customer_id;?>" method="post" >
+                    <input type="hidden" name="id" value="<?php echo $c->customer_id;?>">
                     <?php }?>
-                    <?php if($total != 0){ ?>
-                    <input type="hidden" name="total" value="<?php echo number_format($total);?>">
-                    <?php }else{?>
-                        <input type="hidden" name="total" value="0">
-                    <?php }?> 
-                    <input type="submit" name="id" value="Refresh">
+                    <input type="submit" value="Refresh">
                     </form></th>
                     <?php break; } } }?>
                 </tr>

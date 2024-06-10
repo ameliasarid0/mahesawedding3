@@ -178,12 +178,12 @@ class Home extends CI_Controller {
 
 		redirect(base_url().'home/pembayaran/'.$customerid);
 	}
-	public function totalbayar($id)
+	public function totalbayar()
 	{
 		$this->load->model('m_data');
 
 		$total  = $this->input->post('total');
-
+		$id  = $this->input->post('id');
 		$where = array(
 			'customer_id' => $id
 		);

@@ -51,19 +51,6 @@
 								<?php echo form_error('password'); ?>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Foto</td>
-                            <td>
-                                <input type="file" class="form-control" name="foto">
-                                <br/>
-                                <?php 
-                                if(isset ($gambar_error)){
-                                    echo $gambar_error;
-                                } 
-                                ?>
-								<?php echo form_error('foto'); ?>
-                            </td>
-                        </tr>
                     </tbody>
                     <tfoot>
                     </tfoot>

@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 			$where = array(
 				'admin_username' => $username,
 				'admin_password' => md5($password)
-			);
+			); 
 
 			$this->load->model('m_data');
 

@@ -39,7 +39,14 @@
                             <th>NO HP</th>
                             <th>STATUS AKUN</th>
                             <th width="10%">BUKTI BAYAR</th>
-                            <th width="10%" colspan="2">OPSI</th>
+                            <th width="8%">EDIT</th>
+                            <?php 
+			                $id_user = $this->session->userdata('id');
+                            if ($id_user ==1){
+		                    ?>
+                            <th width="8%">HAPUS</th>
+                            <?php } ?>
+                            <th width="8%">KIRIM WA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,11 +65,19 @@
 								<img src="<?php echo base_url(); ?><?php echo $c->customer_bukti; ?>" style="width: 100%;height: auto">
 								</a>
                             </td>
-                            <td>            
+                            <td align ="center">            
                             <a href="<?php echo base_url().'dashboard/customer_edit/'.$c->customer_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
                             </td>
-                            <td>
+                            <?php 
+			                $id_user = $this->session->userdata('id');
+                            if ($id_user ==1){
+		                    ?>
+                            <td align ="center">
                             <a onclick="return confirm('Yakin menghapus <?php echo $c->customer_nama; ?> ?')" href="<?php echo base_url().'dashboard/customer_hapus/'.$c->customer_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+                            </td>
+                            <?php } ?>
+                            <td align ="center">            
+                            <a href="https://api.whatsapp.com/send?phone=62<?php echo $c->customer_hp;?>&text=*PENDAFTARAN%20BERHASIL*%0ASilahkan%20melakukan%20login%20dengan%20rincian%20akun%20sebagai%20berikut%20%3A%20%0A*Username%20%3A%20<?php echo $c->customer_email; ?>*%0A*Password%20%3A%20<?php echo $c->customer_ttl; ?>*%0A%0ATerimakasih%0A*-Admin%20Mahesa%20Wedding-*" class="btn btn-warning btn-sm"> <i class="fa fa-commenting"></i> </a>
                             </td>
                         </tr>
                         <?php 
