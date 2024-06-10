@@ -19,7 +19,7 @@
   
       <!-- Login Form -->
       <form action="<?php echo base_url().'home/masuk_act' ?>" method="post">
-        <input type="text" id="email" required="required" class="fadeIn second" name="email" placeholder="Username">
+        <input type="email" id="email" required="required" class="fadeIn second" name="email" placeholder="Username">
         <?php echo form_error('username'); ?>
         <input type="password" id="password" required="required" class="fadeIn third" name="password" placeholder="Password">
         <?php echo form_error('password'); ?>

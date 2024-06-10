@@ -123,7 +123,7 @@
                     </tfoot>
                 </table>
                 <br>
-                <a onclick="return confirm('Apakah status akun = <?php echo $c->customer_status; ?> , sudah benar ?')"><h3 class="main--title">
+                <a onclick="return confirm('Apakah status akun sudah benar ?')"><h3 class="main--title">
                 <input type="submit" class="btn btn-sm btn-primary" value="SIMPAN">
                 </h3></a>
             </form>

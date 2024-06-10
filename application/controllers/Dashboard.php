@@ -492,14 +492,44 @@ class Dashboard extends CI_Controller {
 	{
 		$invoice  = $this->input->post('invoice');
 		$status  = $this->input->post('status');
+		$customerid  = $this->input->post('customerid');
 		$where = array(
-			'bayar_id' => $invoice 
+			'bayar_id' => $invoice,
 		);
 		$data = array(
-			'status_bayar' => $status
+			'status_bayar' => $status,
 		);
+		
 		$this->m_data->update_data($where,$data,'pembayaran');
-		redirect(base_url().'dashboard/pesanan');
+
+		redirect(base_url().'dashboard/detailbayar/'.$customerid);
+	}
+	
+	public function nominal()
+	{
+		$customerid  = $this->input->post('customerid');
+		$nominal  = $this->input->post('nominal');
+		$where = array(
+			'customer_id' => $customerid
+		);
+
+		if($this->input->post('jenisbayar') == "DP1"){
+			$data = array(
+				'dp1' => $nominal * 1000000,
+			);
+		}elseif($this->input->post('jenisbayar') == "DP2"){
+			$data = array(
+				'dp2' => $nominal * 1000000,
+			);
+		}elseif($this->input->post('jenisbayar') == "LNS"){
+			$data = array(
+				'pelunasan' => $nominal * 1000000,
+			);
+		}
+
+		$this->m_data->update_data($where,$data,'detailpembayaran');
+
+		redirect(base_url().'dashboard/detailbayar/'.$customerid);
 	}
 
 	public function detailpesan($id)

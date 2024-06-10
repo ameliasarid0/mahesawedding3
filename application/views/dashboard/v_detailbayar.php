@@ -89,11 +89,20 @@
                     <td align="center">
                         <form action="<?php echo base_url('dashboard/pembayaran_status') ?>" method="post">
                         <input type="hidden" value="<?php echo $b->bayar_id ?>" name="invoice">
+                        <?php foreach ($customer as $c){?>
+                        <input type= "hidden" value="<?php echo $c->customer_id?>" name="customerid"> 
+                        <?php }?>
                         <select id="status" class="fadeIn third" name="status" onchange="form.submit()">
                             <option value="onprocess" <?php if($b->status_bayar =="onprocess") {?> selected <?php }?> >Menunggu Konfirmasi</option>
                             <option value="confirmed" <?php if($b->status_bayar =="confirmed") {?> selected <?php }?> >Pembayaran dikonfirmasi</option>
                         </select>
-                        </form>                            
+                        </form> 
+                        <form action="<?php echo base_url('dashboard/nominal') ?>" method="post">
+                        <?php foreach ($customer as $c){?>
+                        <input type= "hidden" value="<?php echo $c->customer_id?>" name="customerid"> 
+                        <?php }?>
+                        <input type= "hidden" value="<?php echo $b->jenis_bayar?>" name="jenisbayar">
+                        <input type= "hidden" value="<?php echo number_format($b->nominal_bayar);?>" name="nominal">                         
                     </td>
                 </tr>
                 <?php } ?>
@@ -110,6 +119,8 @@
                     <?php } ?>
 
                     <td colspan="2" rowspan="2" align="center">
+                    <input type="submit" class="btn btn-sm btn-primary" value="Update">
+                    </form>
                 </td>
                 </tr>
               </tbody>

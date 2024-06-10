@@ -176,33 +176,7 @@ class Home extends CI_Controller {
 		);
 		$this->m_data->insert_data($data,'pembayaran');
 
-
-		$where = array(
-			'customer_id' => $customerid
-		);
-
-		if($this->input->post('jenisbayar') == "DP1"){
-			$data = array(
-				'customer_id' => $customerid,
-				'dp1' => $nominal,
-				'status' => $status,
-			);
-		}elseif($this->input->post('jenisbayar') == "DP2"){
-			$data = array(
-				'dp2' => $nominal,
-				'status' => $status,
-			);
-		}elseif($this->input->post('jenisbayar') == "LNS"){
-			$data = array(
-				'customer_id' => $customerid,
-				'pelunasan' => $nominal,
-				'status' => $status,
-			);
-		}
-		
-		$this->m_data->update_data($where,$data,'detailpembayaran');
-
-		redirect(base_url().'home/pesanan');
+		redirect(base_url().'home/pembayaran/'.$customerid);
 	}
 	public function totalbayar($id)
 	{

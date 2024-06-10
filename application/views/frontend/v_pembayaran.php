@@ -39,7 +39,7 @@
               <tr>
                 <td colspan="4">
                   <input type="submit" class="btn btn-sm btn-primary" value="Upload">
-                </td>	
+                </td>	 
               </tr>
               </tbody>
               <tfoot>
@@ -89,6 +89,7 @@
                 ?>
                 <?php 
                 $jenisbayar = $b->jenis_bayar;
+                $status = $b->status_bayar;
                 ?>
                 <tr>
                     <td>                        
@@ -127,36 +128,38 @@
                     <th><b>Total Bayar</b></th>
                     <?php 
                     foreach($detailpembayaran as $d){
-                    $harga = $p->produk_harga;
+                    foreach($pembayaran as $b){
                     $status = $b->status_bayar;
-
-                    if($b->status_bayar =="confirmed"){
+                    $harga = $p->produk_harga; 
+                    if($status =="confirmed"){
                     $dp1 = $d->dp1;
                     $dp2 = $d->dp2;
                     $pelunasan = $d->pelunasan;
                     $total = $dp1 + $dp2 + $pelunasan;
-                    }else{
-                        $dp1 = 0;
-                        $dp2 = 0;
-                        $pelunasan = 0; 
-                    }
+                    if($total != 0){
                     ?>
-                        <th><b><?php echo "Rp. ".number_format($total).",-"; ?></b></th>
-                    <?php } ?>
+                    <th><b><?php echo "Rp. ".number_format($total).",-"; ?></b></th>
+                    <?php }else{?>
+                    <th><b><?php echo "Rp. 0,-"; ?></b></th>
+                    <?php }?>
                 </tr>
                 <tr>
                     <th colspan="3"></th>
                     <th><b>Sisa Bayar</b></th>
+                    <?php if($total != 0){ ?>
                     <th><b><?php echo "Rp. ".number_format($harga-$total).",-"; ?></b></th>
+                    <?php }else{?>
+                    <th><b><?php echo "Rp. 0,-"; ?></b></th>
+                    <?php }?>                
                 </tr>
                 <tr>
                     <th colspan="3">
                     </th>
                     <th colspan="2">
                     <?php
-                    $harga = $p->produk_harga;
-                    if($total==$harga){?>
+                    if($total == $harga){?>
                     <img src="<?php echo base_url('assets/lunas.jpg') ?>" alt="" style="width: 60%;height: auto"></th>
+                    <?php }?>
                 </tr>
                 <tr>
                     <th>
@@ -165,12 +168,14 @@
                     ?>
                     <form action="<?php echo base_url().'home/totalbayar/'.$c->customer_id;?>" method="post" >
                     <?php }?>
+                    <?php if($total != 0){ ?>
                     <input type="hidden" name="total" value="<?php echo number_format($total);?>">
+                    <?php }else{?>
+                        <input type="hidden" name="total" value="0">
+                    <?php }?> 
                     <input type="submit" name="id" value="Refresh">
                     </form></th>
-                    <?php }else{
-                        echo "</th>";
-                    }?>
+                    <?php break; } } }?>
                 </tr>
               </tbody>
               <?php } ?>
