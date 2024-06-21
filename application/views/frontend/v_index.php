@@ -119,48 +119,42 @@
       <div class="popup" id="popup1">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-01.jpg" alt="IDR 20.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-01.jpg" alt="IDR 20.000.000"></a>
          </div>
       </div>
       </div>
       <div class="popup" id="popup2">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-02.jpg" alt="IDR 22.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-02.jpg" alt="IDR 22.000.000"></a>
          </div>
       </div>
       </div>
       <div class="popup" id="popup3">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-04.jpg" alt="IDR 27.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-04.jpg" alt="IDR 27.000.000"></a>
          </div>
       </div>
       </div>
       <div class="popup" id="popup4">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-03.jpg" alt="IDR 27.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-03.jpg" alt="IDR 27.000.000"></a>
          </div>
       </div>
       </div>
       <div class="popup" id="popup5">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-05.jpg" alt="IDR 30.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-05.jpg" alt="IDR 30.000.000"></a>
          </div>
       </div>
       </div>
       <div class="popup" id="popup6">
       <div class="popup__content">
          <div class="popup__img">
-            <img src="img/price-img-06.jpg" alt="IDR 35.000.000">
-            <a href="#" class="popup__close">&times;</a>
+            <a href="#"><img src="img/price-img-06.jpg" alt="IDR 35.000.000"></a>
          </div>
       </div>
       </div>
