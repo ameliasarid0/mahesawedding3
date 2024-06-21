@@ -54,17 +54,16 @@
 <font color="#19709c">Tanggal Resepsi</font>
 <input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi" required="required">
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
-<font color="#19709c">
+<font color="red">
+<h3>
 !!  SYARAT DAN KETENTUAN  !!
 Biaya Booking Tanggal Rp. 1.000.000,- (diluar harga paket).
 Jika ada permintaan ubah tanggal silahkan konfirmasi ADMIN terlebih dahulu.
-UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
-</font>
-<h3>
-TRANSFER HANYA MELALUI REK 
+UANG BOOKING HANGUS bila ada pembatalan secara sepihak.</h3></font>
+<h1>TRANSFER HANYA MELALUI REK 
 BCA 37808990101 A/N MAHESA WEDDING GALLERY 
 --Silahkan Upload Bukti Bayar--
-</h3>
+</h1>
         <input type="file" id="foto" class="fadeIn third" name="foto" placeholder="Bukti Bayar" accept="image/*" required="required">
         </pre>
         <input type="hidden" id="status" class="fadeIn second" name="status" value="BELUM AKTIF">

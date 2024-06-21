@@ -106,6 +106,14 @@
          <a href="#popup6" class="btn">SELENGKAPNYA</a>
       </div>
       </div>
+      <font color="red">
+      !!  SYARAT DAN KETENTUAN  !!
+      <br>Biaya Booking Tanggal Rp. 1.000.000,- (diluar harga paket).
+      <br>Jika ada permintaan ubah tanggal silahkan konfirmasi ADMIN terlebih dahulu.
+      <br>UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
+      <br>WAJIB DIBAYAR SAAT PENDAFTARAN BOOKING
+      <br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      </font>
 
       <form action="<?php echo base_url().'home/daftar' ?>" method="post">
          <input type="submit" class="fadeIn fourth" value="DAFTAR">
