@@ -296,20 +296,6 @@ class Dashboard extends CI_Controller {
 
 		if($this->form_validation->run() != false){
 
-			$config['encrypt_name'] = TRUE;
-			$config['upload_path']   = '/img/foto_user/';
-			$config['allowed_types'] = 'gif|jpg|png';
-
-			$this->load->library('upload', $config);
-
-			if($this->upload->do_upload('foto')){
-				$foto = $this->upload->do_upload('foto');
-				$gambar1 = $this->upload->data();
-				$foto = $gambar1['file_name'];
-			}else{
-				$foto = "";
-			}
- 
 			$nama = $this->input->post('nama');
 			$username = $this->input->post('username');
 			$password = md5($this->input->post('password'));
@@ -318,7 +304,6 @@ class Dashboard extends CI_Controller {
 				'admin_nama' => $nama,
 				'admin_username' => $username,
 				'admin_password' => md5($password),
-				'admin_foto' => $foto
 			);
 
 			$this->m_data->insert_data($data,'admin');
