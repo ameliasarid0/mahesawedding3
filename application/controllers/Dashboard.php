@@ -381,9 +381,6 @@ class Dashboard extends CI_Controller {
 
 		$detail_admin = $this->m_data->edit_data($where,'admin')->row();
 
-		@chmod('./gambar/user/'.$detail_admin->admin_foto, 0777);
-		@unlink('./gambar/user/'.$detail_admin->admin_foto);
-
 		$this->m_data->delete_data($where,'admin');
 
 		redirect(base_url().'dashboard/admin?alert=hapus');
