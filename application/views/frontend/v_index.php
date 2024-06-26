@@ -21,6 +21,16 @@
          <input type="submit" class="fadeIn fourth" value=" LOG IN ">
       </form>
 
+      <?php 
+  			if(isset($_GET['alert'])){
+	  			if($_GET['alert'] == "menunggukonfirmasi"){
+						echo "<div class='alert success'><strong>! ! DAFTAR SUDAH BERHASIL ! !<br>Silahkan menunggu konfirmasi username dan password yang akan dikirimkan melalui Email atau Whatsapp.</strong></div>";
+					}elseif($_GET['alert'] == "tanggalpenuh"){
+						echo "<div class='alert error'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
+		  		}
+			}
+		?>
+
       <div class="section-card">
       <div class="card card">
          <img src="img/price-tn-01.jpg" alt="IDR 20.000.000" class="card__img">
@@ -106,18 +116,19 @@
          <a href="#popup6" class="btn">SELENGKAPNYA</a>
       </div>
       </div>
-      <font color="red">
-      !!  SYARAT DAN KETENTUAN  !!
-      <br>Biaya Booking Tanggal Rp. 1.000.000,- (diluar harga paket).
-      <br>Jika ada permintaan ubah tanggal silahkan konfirmasi ADMIN terlebih dahulu.
-      <br>UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
-      <br>WAJIB DIBAYAR SAAT PENDAFTARAN BOOKING
-      <br>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      </font>
-
-      <form action="<?php echo base_url().'home/daftar' ?>" method="post">
-         <input type="submit" class="fadeIn fourth" value="DAFTAR">
+      <form action="<?php echo base_url().'home/cektanggal' ?>" method="post" enctype="multipart/form-data">
+<pre>
+<font color="red">
+!!  SYARAT DAN KETENTUAN  !!
+<br>Biaya Booking Rp. 1.000.000,- (diluar harga paket).
+<br>Jika ada permintaan ubah tanggal silahkan konfirmasi ADMIN terlebih dahulu.
+<br>UANG BOOKING HANGUS bila ada pembatalan secara sepihak.
+<br>SILAHKAN CEK TANGGAL SEBELUM BOOKING
+</font>
+<input type="text" readonly='true' id="datepicker" class="fadeIn third" name="tgl" placeholder="Pilih tanggal (klik disini)" required="required"><input type="submit" class="fadeIn fourth" value="CEK">
+</pre>
       </form>
+
       <!-- Footer -->
       <div id="formFooter">
         Masin bingung? Yuk <a class="underlineHover" href="https://wa.me/6285776699443/?text=%2AKONSULTASI+BOOKING+WO%2A%0D%0ANama+++%3A%0D%0AAlamat+Tinggal+%3A%0D%0ARencana+Acara+Kapan+%3A+%0D%0APertanyaan+%3A+%0D%0A" />Hubungi Admin</a>
@@ -170,3 +181,18 @@
     </div>
 </body>
 </html>
+
+<pre> 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script>
+$( function() { 
+  $( "#datepicker" ).datepicker({
+  minDate: moment().add('d', 30).toDate(),
+  dateFormat:'yy-mm-dd'
+  }); 
+}); 
+</script> 
+</pre>

@@ -13,25 +13,18 @@
       <div class="fadeIn first">
         <img src="<?php echo base_url() ?>img/mahesa_logo.png" id="icon1" />
       </div>
-              <?php 
-							if(isset($_GET['alert'])){
-								if($_GET['alert'] == "duplikat"){
-									echo "<div class='alert error'>Email Sudah Terdaftar !!</div>";
-								}elseif($_GET['alert'] == "menunggukonfirmasi"){
-									echo "<div class='alert success'><strong>! ! DAFTAR SUDAH BERHASIL ! !<br>Silahkan menunggu konfirmasi username dan password yang akan dikirimkan melalui Email atau Whatsapp.</strong></div>";
-								}elseif($_GET['alert'] == "tanggalpenuh"){
-									echo "<div class='alert error'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
-								}elseif($_GET['alert'] == "tanggaltersedia"){
-									echo "<div class='alert success'>Tanggal belum di booking, Silahkan lanjutkan pendaftaran !!</div>";
-                }
-							}
-							?>
+      <?php 
+  			if(isset($_GET['alert'])){
+	  			if($_GET['alert'] == "duplikat"){
+						echo "<div class='alert error'>Email Sudah Terdaftar !!</div>";
+					}elseif($_GET['alert'] == "tanggalpenuh"){
+						echo "<div class='alert error'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
+		  		}elseif($_GET['alert'] == "tanggaltersedia"){
+						echo "<div class='alert success'>Tanggal belum di booking, Silahkan lanjutkan pendaftaran !!</div>";
+          }
+				}
+			?>
 <pre>
-<form action="<?php echo base_url().'home/cektanggal' ?>" method="post" enctype="multipart/form-data">
-<font color="red">Silahkan cek tanggal terlebih dahulu !!</font>
-<input type="date" id="tgl" class="fadeIn third" name="tgl" placeholder="Tanggal Resepsi" required="required">
-<input type="submit" class="fadeIn fourth" value="CEK TANGGAL">
-</form>
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 <form action="<?php echo base_url().'home/daftaraksi' ?>" method="post" enctype="multipart/form-data">
 <input type="text" id="nama" class="fadeIn second" name="nama" placeholder="Nama Lengkap" required="required">
@@ -60,7 +53,7 @@
 
 
 <font color="#19709c">Tanggal Resepsi</font>
-<input type="date" id="tglacara" class="fadeIn third" name="tglrsp" placeholder="Tanggal Resepsi" required="required">
+<input type="text" readonly='true' id="datepicker" class="fadeIn third" name="tglrsp" placeholder="Pilih Tanggal (klik disini)" required="required">
 <font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 <font color="red">
 <h3>
@@ -87,3 +80,17 @@ BCA 37808990101 A/N MAHESA WEDDING GALLERY
 </body>
 </html>
 
+<pre> 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script>
+$( function() { 
+  $( "#datepicker" ).datepicker({
+  minDate: moment().add('d', 30).toDate(),
+  dateFormat:'yy-mm-dd'
+  }); 
+}); 
+</script> 
+</pre>

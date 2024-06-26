@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 		$tgl = $this->input->post('tgl');
 		$cek_tanggal= $this->db->query("select * from customer where customer_tglrsp='$tgl'");
 		if($cek_tanggal->num_rows() > 0){
-			redirect(base_url().'home/daftar?alert=tanggalpenuh'); 
+			redirect(base_url().'home?alert=tanggalpenuh'); 
 		}else{
 			redirect(base_url().'home/daftar?alert=tanggaltersedia'); 
 		}
@@ -132,7 +132,7 @@ class Home extends CI_Controller {
 				'customer_id' => $customerid,
 			);
 			$this->m_data->insert_data($data,'detailpembayaran');
-			redirect(base_url().'home/daftar?alert=menunggukonfirmasi');
+			redirect(base_url().'home?alert=menunggukonfirmasi');
 		}
 
 		$this->m_data->insert_data($data,'detailpembayaran');
