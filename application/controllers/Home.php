@@ -68,6 +68,17 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/v_daftar', $data);
 	}
 	
+	public function cektanggal()
+	{
+		$this->load->model('m_data');
+		$tgl = $this->input->post('tgl');
+		$cek_tanggal= $this->db->query("select * from customer where customer_tglrsp='$tgl'");
+		if($cek_tanggal->num_rows() > 0){
+			redirect(base_url().'home/daftar?alert=tanggalpenuh'); 
+		}else{
+			redirect(base_url().'home/daftar?alert=tanggaltersedia'); 
+		}
+	}
 	public function daftaraksi()
 	{
 		$this->load->model('m_data');

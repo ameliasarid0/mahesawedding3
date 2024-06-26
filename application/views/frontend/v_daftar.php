@@ -20,11 +20,19 @@
 								}elseif($_GET['alert'] == "menunggukonfirmasi"){
 									echo "<div class='alert success'><strong>! ! DAFTAR SUDAH BERHASIL ! !<br>Silahkan menunggu konfirmasi username dan password yang akan dikirimkan melalui Email atau Whatsapp.</strong></div>";
 								}elseif($_GET['alert'] == "tanggalpenuh"){
-									echo "<div class='alert eror'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
-								}
+									echo "<div class='alert error'>Tanggal sudah di booking, Silahkan hubungi Admin !!</div>";
+								}elseif($_GET['alert'] == "tanggaltersedia"){
+									echo "<div class='alert success'>Tanggal belum di booking, Silahkan lanjutkan pendaftaran !!</div>";
+                }
 							}
 							?>
-      <pre>
+<pre>
+<form action="<?php echo base_url().'home/cektanggal' ?>" method="post" enctype="multipart/form-data">
+<font color="red">Silahkan cek tanggal terlebih dahulu !!</font>
+<input type="date" id="tgl" class="fadeIn third" name="tgl" placeholder="Tanggal Resepsi" required="required">
+<input type="submit" class="fadeIn fourth" value="CEK TANGGAL">
+</form>
+<font color="#19709c">_____________________________________________________________________________________________________________________________</font>
 <form action="<?php echo base_url().'home/daftaraksi' ?>" method="post" enctype="multipart/form-data">
 <input type="text" id="nama" class="fadeIn second" name="nama" placeholder="Nama Lengkap" required="required">
 <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email" required="required">
