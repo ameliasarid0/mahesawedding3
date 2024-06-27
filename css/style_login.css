@@ -3,7 +3,7 @@
 /* BASIC */
 
 html {
-  background-color: #f0d27f;
+  background-color: #4db0e2;
 }
 
 body {
@@ -12,11 +12,11 @@ body {
 }
 
 table{
-  border-color: #f0d27f;
+  border-color: #4db0e2;
   background-color: #ffffff;
 }
 a {
-  color: #a87c2d;
+  color: #1984b9;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -30,7 +30,7 @@ h2 {
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px; 
-  color: #a87c2d;
+  color: #1984b9;
 }
 h2:hover{
   color: #ebe9e9;
@@ -97,7 +97,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #f0d27f;
+  border-bottom: 2px solid #4db0e2;
 }
 
 
@@ -105,7 +105,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #a87c2d;
+  background-color: #1984b9;
   border: none;
   color: white;
   padding: 15px 50px;
@@ -125,7 +125,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #f0d27f;
+  background-color: #4db0e2;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -159,7 +159,7 @@ input[type=text], input[type=email], input[type=date],input[type=password],input
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #f0d27f;
+  border-bottom: 2px solid #4db0e2;
 }
 
 input[type=text]:placeholder {
@@ -263,7 +263,7 @@ select{
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #a87c2d;
+  background-color: #1984b9;
   content: "";
   transition: width 0.2s;
 }
@@ -361,11 +361,11 @@ select{
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 30px;
-  background-color: #a87c2d;
+  background-color: #1984b9;
 }
 
 .card .btn:hover {
-  background-color: #f0d27f;
+  background-color: #4db0e2;
 }
 
 
@@ -451,7 +451,7 @@ select{
 }
 
 .header--title {
-  color: #a87c2d;
+  color: #1984b9;
 }
 
 .user--info{
@@ -462,7 +462,7 @@ select{
 
 .search--box {
   border-radius: 15px;
-  color: #a87c2d;
+  color: #1984b9;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -499,7 +499,7 @@ table {
   border-collapse: collapse;
 }
 thead {
-  background: #a87c2d;
+  background: #1984b9;
   color: #fff;
 }
 th {
@@ -517,7 +517,7 @@ td {
 }
 
 tfoot {
-  background: #a87c2d;
+  background: #1984b9;
   font-weight: bold;
   color: #fff;
 }
