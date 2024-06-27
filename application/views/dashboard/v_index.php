@@ -23,17 +23,17 @@
                             <span class="title">Jumlah Admin</span>
                             <span class="amount--value"><?php echo $jumlah_admin ?> orang</span>
                         </div>
-                        <i class="fas fa-user icon"></i>
+                        <i class="fas fa-user icon dark-red"></i>
                     </div>
                 </div>
 
-                <div class="payment--card light-purple">
+                <div class="payment--card light-yellow">
                     <div class="card--header">
                         <div class="amount">
                             <span class="title">Jumlah Customer</span>
                             <span class="amount--value"><?php echo $jumlah_customer ?> orang</span>
                         </div>
-                        <i class="fas fa-users icon dark-purple"></i>
+                        <i class="fas fa-users icon dark-yellow"></i>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
                     <?php } ?>
                             
                         </div>
-                        <i class="fa-solid fa-dollar icon dark-green"></i>
+                        <i class="fa-solid fa-dollar icon dark-blue"></i>
                     </div>
                 </div>
             </div>

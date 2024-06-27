@@ -206,12 +206,11 @@ body {
 .icon {
     color: #fff;
     padding: 1rem;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     text-align: center;
     border-radius: 50%;
-    font-size: 1.5rem;
-    background: red;
+    font-size: 1rem;
 }
 
 .card-detail {
@@ -225,8 +224,8 @@ body {
 .light-red {
     background: rgb(251, 233, 233);
 }
-.light-purple {
-    background: rgb(254, 226, 254);
+.light-yellow {
+    background: rgb(254, 249, 226);
 }
 .light-green {
     background: rgb(235, 254, 235);
@@ -240,11 +239,11 @@ body {
 .dark-red {
     background: red;
 }
-.dark-purple {
-    background: purple;
+.dark-yellow {
+    background: rgb(255, 208, 0);
 }
 .dark-green {
-    background: green;
+    background: rgb(16, 199, 16);
 }
 .dark-blue {
     background: blue;

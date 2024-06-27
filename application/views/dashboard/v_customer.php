@@ -66,18 +66,18 @@
 								</a>
                             </td>
                             <td align ="center">            
-                            <a href="<?php echo base_url().'dashboard/customer_edit/'.$c->customer_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
+                            <a href="<?php echo base_url().'dashboard/customer_edit/'.$c->customer_id; ?>"> <i class="fa fa-pencil icon dark-yellow"></i> </a>
                             </td>
                             <?php 
 			                $id_user = $this->session->userdata('id');
                             if ($id_user ==1){
 		                    ?>
                             <td align ="center">
-                            <a onclick="return confirm('Yakin menghapus <?php echo $c->customer_nama; ?> ?')" href="<?php echo base_url().'dashboard/customer_hapus/'.$c->customer_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+                            <a onclick="return confirm('Yakin menghapus <?php echo $c->customer_nama; ?> ?')" href="<?php echo base_url().'dashboard/customer_hapus/'.$c->customer_id; ?>"> <i class="fa fa-trash icon dark-red"></i> </a>
                             </td>
                             <?php } ?>
                             <td align ="center">            
-                            <a href="https://api.whatsapp.com/send?phone=62<?php echo $c->customer_hp;?>&text=*PENDAFTARAN%20BERHASIL*%0ASilahkan%20melakukan%20login%20dengan%20rincian%20akun%20sebagai%20berikut%20%3A%20%0A*Username%20%3A%20<?php echo $c->customer_email; ?>*%0A*Password%20%3A%20<?php echo $c->customer_ttl; ?>*%0A%0ATerimakasih%0A*-Admin%20Mahesa%20Wedding-*" class="btn btn-warning btn-sm"> <i class="fa fa-commenting"></i> </a>
+                            <a href="https://api.whatsapp.com/send?phone=62<?php echo $c->customer_hp;?>&text=*PENDAFTARAN%20BERHASIL*%0ASilahkan%20melakukan%20login%20dengan%20rincian%20akun%20sebagai%20berikut%20%3A%20%0A*Username%20%3A%20<?php echo $c->customer_email; ?>*%0A*Password%20%3A%20<?php echo $c->customer_ttl; ?>*%0A%0ATerimakasih%0A*-Admin%20Mahesa%20Wedding-*"> <i class="fa fa-commenting icon dark-green"></i> </a>
                             </td>
                         </tr>
                         <?php 

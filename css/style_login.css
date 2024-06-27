@@ -3,7 +3,7 @@
 /* BASIC */
 
 html {
-  background-color: #56baed;
+  background-color: #f0d27f;
 }
 
 body {
@@ -12,11 +12,11 @@ body {
 }
 
 table{
-  border-color: #39ace7;
+  border-color: #f0d27f;
   background-color: #ffffff;
 }
 a {
-  color: #92badd;
+  color: #a87c2d;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -30,7 +30,7 @@ h2 {
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px; 
-  color: #1984b9;
+  color: #a87c2d;
 }
 h2:hover{
   color: #ebe9e9;
@@ -97,7 +97,7 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #f0d27f;
 }
 
 
@@ -105,7 +105,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #19709c;
+  background-color: #a87c2d;
   border: none;
   color: white;
   padding: 15px 50px;
@@ -125,7 +125,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #56baed;
+  background-color: #f0d27f;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -159,7 +159,7 @@ input[type=text], input[type=email], input[type=date],input[type=password],input
 
 input[type=text]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #f0d27f;
 }
 
 input[type=text]:placeholder {
@@ -263,7 +263,7 @@ select{
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #a87c2d;
   content: "";
   transition: width 0.2s;
 }
@@ -361,18 +361,18 @@ select{
   margin-left: 50%;
   transform: translateX(-50%);
   margin-bottom: 30px;
-  background-color: #19709c;
+  background-color: #a87c2d;
 }
 
 .card .btn:hover {
-  background-color: #56baed;
+  background-color: #f0d27f;
 }
 
 
 /* POPUP */
 .popup {
   width: 100%;
-  height: 274vh;
+  height: 110%;
   background-color: rgba(0,0,0, .5);
   position: fixed;
   top: 0;
@@ -385,8 +385,7 @@ select{
 .popup__content {
   width: max-content;
   height: max-content;
-  background-color: #fff;
-  box-shadow: 0 20px 40px rgba(0,0,0, .2);
+  box-shadow:rgba(0,0,0, .2);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -396,7 +395,7 @@ select{
 }
 .popup__img {
   width: 100%;
-  height: 100pv;
+  height: 100%;
 }
 
 .popup__img img {
@@ -421,24 +420,6 @@ select{
 #popup6:target .popup__content {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-}
-
-.popup__close:link,
-.popup__close:visited {
-  position: absolute;
-  top: 12px;
-  left: 580px;
-  text-decoration: none;
-  color: #000;
-  font-size: 50px;
-  display: inline-block;
-  line-height: 1;
-  transition: all .3s;
-}
-
-.popup__close:hover,
-.popup__close:active {
-  color: #555;
 }
 
 
@@ -470,7 +451,7 @@ select{
 }
 
 .header--title {
-  color: #1984b9;
+  color: #a87c2d;
 }
 
 .user--info{
@@ -481,7 +462,7 @@ select{
 
 .search--box {
   border-radius: 15px;
-  color: #1984b9;
+  color: #a87c2d;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -518,7 +499,7 @@ table {
   border-collapse: collapse;
 }
 thead {
-  background: #1984b9;
+  background: #a87c2d;
   color: #fff;
 }
 th {
@@ -536,7 +517,7 @@ td {
 }
 
 tfoot {
-  background: #1984b9;
+  background: #a87c2d;
   font-weight: bold;
   color: #fff;
 }

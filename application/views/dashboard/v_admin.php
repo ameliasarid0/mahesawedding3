@@ -25,7 +25,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="10%">NO</th>
+                            <th width="5%">NO</th>
 						    <th>Nama</th>
 						    <th width="40%">Username</th>
                             <?php 
@@ -64,10 +64,10 @@
                             if ($id_user ==1){
 		                    ?>
 							<td>
-								<a href="<?php echo base_url().'dashboard/admin_edit/'.$p->admin_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil">    </i> </a>
+								<a href="<?php echo base_url().'dashboard/admin_edit/'.$p->admin_id; ?>"> <i class="fa fa-pencil icon dark-yellow">    </i> </a>
                             </td>
                             <td>
-								<a onclick="return confirm('Yakin menghapus <?php echo $p->admin_nama; ?> ?')" href="<?php echo base_url().'dashboard/admin_hapus/'.$p->admin_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+								<a onclick="return confirm('Yakin menghapus <?php echo $p->admin_nama; ?> ?')" href="<?php echo base_url().'dashboard/admin_hapus/'.$p->admin_id; ?>"> <i class="fa fa-trash icon dark-red"></i> </a>
 							</td>
                             <?php } ?>
 						</tr>

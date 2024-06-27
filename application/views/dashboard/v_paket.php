@@ -67,10 +67,10 @@
 								</div>
 							</td>
 							<td>                        
-								<a href="<?php echo base_url().'dashboard/paket_edit/'.$p->produk_id; ?>" class="btn btn-warning btn-sm"> <i class="fa fa-pencil"></i> </a>
+								<a href="<?php echo base_url().'dashboard/paket_edit/'.$p->produk_id; ?>"> <i class="fa fa-pencil icon dark-yellow"></i> </a>
 							</td>
 							<td>
-								<a onclick="return confirm('Yakin menghapus <?php echo $p->produk_nama; ?> ?')" href="<?php echo base_url().'dashboard/paket_hapus/'.$p->produk_id; ?>" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
+								<a onclick="return confirm('Yakin menghapus <?php echo $p->produk_nama; ?> ?')" href="<?php echo base_url().'dashboard/paket_hapus/'.$p->produk_id; ?>"> <i class="fa fa-trash icon dark-red"></i> </a>
 							</td>
 						</tr>
 						<?php 

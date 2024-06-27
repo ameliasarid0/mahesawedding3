@@ -20,7 +20,6 @@
       <form action="<?php echo base_url().'login' ?>" method="post">
          <input type="submit" class="fadeIn fourth" value=" LOG IN ">
       </form>
-
       <?php 
   			if(isset($_GET['alert'])){
 	  			if($_GET['alert'] == "menunggukonfirmasi"){
@@ -30,7 +29,6 @@
 		  		}
 			}
 		?>
-
       <div class="section-card">
       <div class="card card">
          <img src="img/price-tn-01.jpg" alt="IDR 20.000.000" class="card__img">
