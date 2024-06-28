@@ -379,8 +379,6 @@ class Dashboard extends CI_Controller {
 			'admin_id' => $id
 		);
 
-		$detail_admin = $this->m_data->edit_data($where,'admin')->row();
-
 		$this->m_data->delete_data($where,'admin');
 
 		redirect(base_url().'dashboard/admin?alert=hapus');
